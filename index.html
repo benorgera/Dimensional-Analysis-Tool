@@ -8,6 +8,7 @@
   		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 	</head>
 	<body>
 		<div class="text-center">
@@ -34,7 +35,7 @@
     			<div id="length" class="tab-pane fade in active">
             <h4>SI Units</h4>
       			<ul>
-              <li draggable="true" class="btn btn-primary btn-sm" style="cursor:move;">mm</li>
+              <li draggable="true" class="btn btn-primary btn-sm" style="cursor:move; z-index:1" id="mm">mm</li>
               <li draggable="true" class="btn btn-primary btn-sm" style="cursor:move;">cm</li>
               <li draggable="true" class="btn btn-primary btn-sm" style="cursor:move;">dm</li>
               <li draggable="true" class="btn btn-primary btn-sm" style="cursor:move;">m</li>
@@ -207,24 +208,21 @@
               <input type= "number" name="value" class="form-control" placeholder= "Enter a value here">
             </div>
             <div class="col-xs-2">
-              <input type="text" name="unit" class="form-control" placeholder="Drag unit here">
+              <input type="text" name="unit" class="form-control" placeholder="Drag unit here" id="textbox" style="z-index:-1">
             </div>
          </form>
 	</body>
 	<script type="text/javascript">
-    function allowDrop(ev) {
-     ev.preventDefault();
-    }
+    $('ul li').draggable({
+      revert: true,
+      helper: 'clone'
+    });
 
-    function drag(ev) {
-     ev.dataTransfer.setData("text", ev.target.id);
-    }
-
-    function drop(ev) {
-      ev.preventDefault();
-      var data = ev.dataTransfer.getData("text");
-      ev.target.appendChild(document.getElementById(data));
-    }
+    $("#textbox").droppable({
+      drop: function (event, ui) {
+        this.value = $(ui.draggable).attr('id');
+      }
+    });
 	</script>
 	<style type="text/css">
 
