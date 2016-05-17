@@ -204,58 +204,35 @@
   		   </div>
          <br>
          <p>Drag and drop units from the above table to the below boxes, and enter your own values. You may also enter units not provided above, but they will not be automatically converted.</p>
-         <div>
-          <div>
          <form class="form-inline">
-            <div class="col-xs-2 top">
-              <input type= "number" name="value" class="form-control" placeholder= "Enter a value here">
-            </div>
-            <div class="col-xs-2 top">
-              <input type="text" name="unit" class="form-control textbox" placeholder="Drag unit here" style="z-index:-1">
-            </div>
-         </form>
-       </div>
-         <div class="btn btn-primary btn-sm multiply">x</div>
-         <div>
-          <form class="form-inline">
-            <div class="col-xs-2 top tab">
-              <input type= "number" name="value" class="form-control" placeholder= "Enter a value here">
-            </div>
-            <div class="col-xs-2 top">
-              <input type="text" name="unit" class="form-control textbox" placeholder="Drag unit here" style="z-index:-1">
-            </div>
-            <div class="btn btn-primary btn-sm equals">=</div>
-         </form>
-         </div>
-         <br>
-         <br>
-         <div>
-         <form class="form-inline">
-            <div class="col-xs-2 bottom">
-              <input type= "number" name="value" class="form-control" placeholder= "Enter a value here">
-            </div>
-            <div class="col-xs-2 bottom">
-              <input type="text" name="unit" class="form-control textbox" placeholder="Drag unit here" id="textbox" style="z-index:-1">
-            </div>
-         </form>
-       </div>
-       <div>
-          <form class="form-inline">
-            <div class="col-xs-2 bottom tab">
-              <input type= "number" name="value" class="form-control" placeholder= "Enter a value here">
-            </div>
-            <div class="col-xs-2 bottom">
-              <input type="text" name="unit" class="form-control textbox" placeholder="Drag unit here" id="textbox" style="z-index:-1">
-            </div>
-         </form>
-       </div>
-       <br>
-       <br>
-       <button class="btn btn-primary btn-sm flip1" id="0" onclick="reverse(this.id)" value="3">&#8635</button>
-       <button class="btn btn-primary btn-sm flip2" id="1" onclick="reverse(this.id)">&#8635</button>
-        <div class="btn btn-primary btn-sm add">Add another multiplicand</div>
-
-       </div>
+          <fieldset>
+              <div id="slide-wrap">
+                  <div id="inner-wrap">
+                      <div class="horizontal-fields">
+                          <input type= "number" name="value" class="form-control col-xs-2 top" placeholder= "Enter a value here">
+                          <input type="text" name="unit" class="form-control textbox col-xs-2 top" placeholder="Drag unit here">
+                          <!--Start of div to be copied-->
+                          <!--<div class="btn btn-primary btn-sm multiply">x</div>-->
+                          <input type= "number" name="value" class="form-control col-xs-2 top tab" placeholder= "Enter a value here">
+                          <input type="text" name="unit" class="form-control textbox col-xs-2 top" placeholder="Drag unit here">
+                           <!--This is where inserted divs should go-->
+                          <div id="insert"></div>
+                          <!--<div class="btn btn-primary btn-sm equals">=</div>-->
+                      </div>
+                      <div class="horizontal-fields">
+                          <input type= "number" name="value" class="form-control col-xs-2 bottom" placeholder= "Enter a value here">
+                          <input type="text" name="unit" class="form-control textbox col-xs-2 bottom" placeholder="Drag unit here">
+                          <!--Start of div to be copied-->
+                          <input type= "number" name="value" class="form-control col-xs-2 bottom tab" placeholder= "Enter a value here">
+                          <input type="text" name="unit" class="form-control textbox col-xs-2 bottom" placeholder="Drag unit here">
+                          <!--This is where inserted divs should go-->
+                          <div id="insert2"></div>
+                      </div>
+                 </div>
+              </div>
+          </fieldset>
+      </form>
+      <div class="btn btn-primary btn-sm add" onclick="add()">Add another multiplicand</div>
        <footer align="center">© Jacob Kalodner 2016. All Rights Reserved. </footer>
 	</body>
 	<script type="text/javascript">
@@ -269,16 +246,70 @@
         this.value = $(ui.draggable).attr('id');
       }
     });
-
+    /*var idnum=2;
+    var increment=0;
 
     function reverse(id){
       var z=document.getElementsByName("value")[parseInt(id)].value;
-      document.getElementsByName("value")[parseInt(id)].value=document.getElementsByName("value")[parseInt(id)+2].value;;
-      document.getElementsByName("value")[parseInt(id)+2].value=z;
+      document.getElementsByName("value")[parseInt(id)].value=document.getElementsByName("value")[parseInt(id)+2+increment].value;;
+      document.getElementsByName("value")[parseInt(id)+2+increment].value=z;
       var x=document.getElementsByName("unit")[parseInt(id)].value;
       document.getElementsByName("unit")[parseInt(id)].value=document.getElementsByName("unit")[parseInt(id)+2].value;;
-      document.getElementsByName("unit")[parseInt(id)+2].value=x;
+      document.getElementsByName("unit")[parseInt(id)+2+increment].value=x;
     };
+    function add(){
+      var div=document.createElement("div");
+      div.textContent="x";
+      div.className="btn btn-primary btn-sm multiply";
+      document.getElementById("insert").appendChild(div);
+      var div2=document.createElement("div");
+      div2.className="col-xs-2 top tab";
+      var input=document.createElement("input");
+      input.className="form-control";
+      input.type="number";
+      input.name="value";
+      input.placeholder="Enter a value here";
+      div2.appendChild(input);
+      document.getElementById("insert").appendChild(div2);
+      var div3=document.createElement("div");
+      div3.className="col-xs-2 top";
+      var input2=document.createElement("input");
+      input2.className="form-control textbox";
+      input2.type="text";
+      input2.name="unit";
+      input2.placeholder="Drag unit here";
+      div3.appendChild(input2);
+      document.getElementById("insert").appendChild(div3);
+
+      var div4=document.createElement("div");
+      div4.className="col-xs-2 bottom tab";
+      var input3=document.createElement("input");
+      input3.className="form-control";
+      input3.type="number";
+      input3.name="value";
+      input3.placeholder="Enter a value here";
+      div4.appendChild(input3);
+      document.getElementById("insert2").appendChild(div4);
+      var div5=document.createElement("div");
+      div5.className="col-xs-2 bottom";
+      var input4=document.createElement("input");
+      input4.className="form-control textbox";
+      input4.type="text";
+      input4.name="unit";
+      input4.placeholder="Drag unit here";
+      input4.id="textbox";
+      div5.appendChild(input4);
+      document.getElementById("insert2").appendChild(div5);
+
+      var flipbut=document.createElement("button");
+      flipbut.textContent=String.fromCharCode(0x21BB);
+      flipbut.className="btn btn-primary btn-sm flip2";
+      flipbut.onclick="reverse(this.id)";
+      flipbut.id=idnum;
+      idnum++;
+      increment++;
+      document.getElementById("butinsert").appendChild(flipbut);
+    }*/
 	</script>
 	<style type="text/css">
 .btns{
@@ -286,11 +317,15 @@
   z-index:1;
 }
 .top{
-  padding-bottom: 2px;
-  border-bottom: 2px solid black;
+  padding-bottom: 0px;
+  margin-bottom: 5px;
   padding-left: 0px;
   padding-right: 0px;
   width:15%;
+  position:static;
+}
+.fraction{
+  border-bottom: 2px solid black;
 }
 .bottom{
   padding-left: 0px;
@@ -341,5 +376,28 @@
   background-color:black;
   border-color: black;
 }
+#slide-wrap {
+    margin:0 auto;
+    overflow: auto; 
+    background:#fff;
+}
+#inner-wrap {
+    float:left;
+    margin-right:-30000px;
+    padding-left:20px;        
+    width: auto;
+}
+
+div.horizontal-fields input,
+div.horizontal-fields textarea,
+div.horizontal-fields select,
+div.horizontal-fields label {
+    width: auto;
+}
+
+.horizontal-fields {
+    display: block;
+}
+
 	</style>
 </html>
