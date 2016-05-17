@@ -251,8 +251,8 @@
        </div>
        <br>
        <br>
-       <div class="btn btn-primary btn-sm flip1">&#8635</div>
-       <div class="btn btn-primary btn-sm flip2">&#8635</div>
+       <button class="btn btn-primary btn-sm flip1" id="0" onclick="reverse(this.id)" value="3">&#8635</button>
+       <button class="btn btn-primary btn-sm flip2" id="1" onclick="reverse(this.id)">&#8635</button>
         <div class="btn btn-primary btn-sm add">Add another multiplicand</div>
 
        </div>
@@ -269,6 +269,16 @@
         this.value = $(ui.draggable).attr('id');
       }
     });
+
+
+    function reverse(id){
+      var z=document.getElementsByName("value")[parseInt(id)].value;
+      document.getElementsByName("value")[parseInt(id)].value=document.getElementsByName("value")[parseInt(id)+2].value;;
+      document.getElementsByName("value")[parseInt(id)+2].value=z;
+      var x=document.getElementsByName("unit")[parseInt(id)].value;
+      document.getElementsByName("unit")[parseInt(id)].value=document.getElementsByName("unit")[parseInt(id)+2].value;;
+      document.getElementsByName("unit")[parseInt(id)+2].value=x;
+    };
 	</script>
 	<style type="text/css">
 .btns{
@@ -316,8 +326,6 @@
 .add{
   margin-left:6px;
   margin-top:25px;
-  position:relative;
-  cursor:auto;
   display: block;
 }
 .equals{
