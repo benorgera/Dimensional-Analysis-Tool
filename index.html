@@ -209,22 +209,29 @@
               <div id="slide-wrap">
                   <div id="inner-wrap">
                       <div class="horizontal-fields">
+                        <div class="fraction">
                           <input type= "number" name="value" class="form-control col-xs-2 top" placeholder= "Enter a value here">
                           <input type="text" name="unit" class="form-control textbox col-xs-2 top" placeholder="Drag unit here">
+                        </div>
                           <!--Start of div to be copied-->
-                          <!--<div class="btn btn-primary btn-sm multiply">x</div>-->
-                          <input type= "number" name="value" class="form-control col-xs-2 top tab" placeholder= "Enter a value here">
+                        <div class="btn btn-primary btn-sm multiply">x</div>
+                        <div class="fraction tab">
+                          <input type= "number" name="value" class="form-control col-xs-2 top" placeholder= "Enter a value here">
                           <input type="text" name="unit" class="form-control textbox col-xs-2 top" placeholder="Drag unit here">
-                           <!--This is where inserted divs should go-->
-                          <div id="insert"></div>
-                          <!--<div class="btn btn-primary btn-sm equals">=</div>-->
+                        </div>
+                         <!--This is where inserted divs should go-->
+                        <div class="btn btn-primary btn-sm equals">=</div>
                       </div>
                       <div class="horizontal-fields">
+                        <div class="non-frac">
                           <input type= "number" name="value" class="form-control col-xs-2 bottom" placeholder= "Enter a value here">
                           <input type="text" name="unit" class="form-control textbox col-xs-2 bottom" placeholder="Drag unit here">
+                        </div>
                           <!--Start of div to be copied-->
-                          <input type= "number" name="value" class="form-control col-xs-2 bottom tab" placeholder= "Enter a value here">
+                        <div class="non-frac tab">
+                          <input type= "number" name="value" class="form-control col-xs-2 bottom" placeholder= "Enter a value here">
                           <input type="text" name="unit" class="form-control textbox col-xs-2 bottom" placeholder="Drag unit here">
+                        </div>
                           <!--This is where inserted divs should go-->
                           <div id="insert2"></div>
                       </div>
@@ -317,27 +324,39 @@
   z-index:1;
 }
 .top{
-  padding-bottom: 0px;
+  padding-bottom: 5px;
   margin-bottom: 5px;
   padding-left: 0px;
   padding-right: 0px;
-  width:15%;
+  width:296px;
   position:static;
 }
 .fraction{
   border-bottom: 2px solid black;
+  height:50px;
+  width: 296px;
+  display:inline-block;
+  padding-bottom: 10px;
+}
+.non-frac{
+  height:34px;
+  width: 296px;
+  display:inline-block;
 }
 .bottom{
+  padding-bottom: 5px;
+  margin-bottom: 5px;
   padding-left: 0px;
   padding-right: 0px;
-  width:15%;
+  width:296px;
+  position:static;
 }
 .tab{
   margin-left:40px;
 }
 .multiply{
-  margin-left:6px;
-  margin-top:25px;
+  margin-left:4px;
+  margin-top:31px;
   position:absolute;
   cursor:auto;
   color:white;
@@ -364,9 +383,9 @@
   display: block;
 }
 .equals{
-  margin-left:6px;
-  margin-top:25px;
-  position:absolute;
+  margin-top: 3px;
+  margin-left: 5px;
+  position: static;
   cursor:auto;
   color:white;
   background-color: black;
@@ -397,7 +416,9 @@ div.horizontal-fields label {
 
 .horizontal-fields {
     display: block;
+    width:auto;
 }
+
 
 	</style>
 </html>
