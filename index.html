@@ -233,7 +233,11 @@
                           <input type="text" name="unit" class="form-control textbox col-xs-2 bottom" placeholder="Drag unit here">
                         </div>
                           <!--This is where inserted divs should go-->
-                          <div id="insert2"></div>
+                      </div>
+                      <div class="horizontal-fields">
+                        <button class="btn btn-primary btn-sm flip1" id="0" onclick="reverse(this.id)">&#8635</button>
+                        <button class="btn btn-primary btn-sm flip2" id="1" onclick="reverse(this.id)">&#8635</button>
+                        <!--Insert buttons-->
                       </div>
                  </div>
               </div>
@@ -253,7 +257,7 @@
         this.value = $(ui.draggable).attr('id');
       }
     });
-    /*var idnum=2;
+    var idnum=2;
     var increment=0;
 
     function reverse(id){
@@ -264,49 +268,45 @@
       document.getElementsByName("unit")[parseInt(id)].value=document.getElementsByName("unit")[parseInt(id)+2].value;;
       document.getElementsByName("unit")[parseInt(id)+2+increment].value=x;
     };
-    function add(){
+
+
+    /*function add(){
       var div=document.createElement("div");
       div.textContent="x";
       div.className="btn btn-primary btn-sm multiply";
-      document.getElementById("insert").appendChild(div);
+      document.getElementsByName("insert").appendChild(div);
+
       var div2=document.createElement("div");
-      div2.className="col-xs-2 top tab";
+      div2.className="fraction tab";
       var input=document.createElement("input");
-      input.className="form-control";
+      input.className="form-control col-xs-2 top";
       input.type="number";
       input.name="value";
       input.placeholder="Enter a value here";
       div2.appendChild(input);
-      document.getElementById("insert").appendChild(div2);
-      var div3=document.createElement("div");
-      div3.className="col-xs-2 top";
       var input2=document.createElement("input");
-      input2.className="form-control textbox";
+      input2.className="form-control textbox col-xs-2 top";
       input2.type="text";
       input2.name="unit";
       input2.placeholder="Drag unit here";
-      div3.appendChild(input2);
-      document.getElementById("insert").appendChild(div3);
+      div2.appendChild(input2);
+      document.getElementById("insert").appendChild(div2);
 
-      var div4=document.createElement("div");
-      div4.className="col-xs-2 bottom tab";
+      var div3=document.createElement("div");
+      div3.className="non-frac tab";
       var input3=document.createElement("input");
-      input3.className="form-control";
+      input3.className="form-control col-xs-2 bottom";
       input3.type="number";
       input3.name="value";
       input3.placeholder="Enter a value here";
-      div4.appendChild(input3);
-      document.getElementById("insert2").appendChild(div4);
-      var div5=document.createElement("div");
-      div5.className="col-xs-2 bottom";
+      div3.appendChild(input3);
       var input4=document.createElement("input");
-      input4.className="form-control textbox";
+      input4.className="form-control textbox col-xs-2 bottom";
       input4.type="text";
       input4.name="unit";
       input4.placeholder="Drag unit here";
-      input4.id="textbox";
-      div5.appendChild(input4);
-      document.getElementById("insert2").appendChild(div5);
+      div3.appendChild(input4);
+      document.getElementById("insert2").appendChild(div3);
 
       var flipbut=document.createElement("button");
       flipbut.textContent=String.fromCharCode(0x21BB);
@@ -333,7 +333,7 @@
 }
 .fraction{
   border-bottom: 2px solid black;
-  height:50px;
+  height:39px;
   width: 296px;
   display:inline-block;
   padding-bottom: 10px;
@@ -342,6 +342,7 @@
   height:34px;
   width: 296px;
   display:inline-block;
+  margin-top: -10px;
 }
 .bottom{
   padding-bottom: 5px;
@@ -369,11 +370,11 @@
 }
 .flip1{
   position: static;
-  margin-left: 155px;
+  margin-left: 132px;
 }
 .flip2{
   position:static;
-  margin-left: 347px;
+  margin-left: 304px;
   text-align:center;
   vertical-align: top;
 }
