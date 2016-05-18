@@ -213,13 +213,11 @@
                           <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
                           <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
                         </div>
-                          <!--Start of div to be copied-->
                         <div class="btn btn-primary btn-sm multiply">x</div>
-                        <div class="fraction tab">
+                        <div class="fraction">
                           <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
                           <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
                         </div>
-                         <!--This is where inserted divs should go-->
                         <div class="btn btn-primary btn-sm equals">=</div>
                       </div>
                       <div class="horizontal-fields">
@@ -227,17 +225,14 @@
                           <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
                           <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
                         </div>
-                          <!--Start of div to be copied-->
                         <div class="non-frac tab">
                           <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
                           <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
                         </div>
-                          <!--This is where inserted divs should go-->
                       </div>
                       <div class="horizontal-fields">
                         <button class="btn btn-primary btn-sm flip1" id="0" type="button" onclick="reverse(this.id)">&#8635</button>
                         <button class="btn btn-primary btn-sm flip2" id="1" type="button" onclick="reverse(this.id)">&#8635</button>
-                        <!--Insert buttons-->
                       </div>
                  </div>
               </div>
@@ -268,19 +263,22 @@
       document.getElementsByName("unit")[parseInt(id)].value=document.getElementsByName("unit")[parseInt(id)+2].value;;
       document.getElementsByName("unit")[parseInt(id)+2+increment].value=x;
     };
-    var insert1='<div class="btn btn-primary btn-sm multiply">x</div>';
-    var insert2='<div class="fraction tab"><input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here"><input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here"></div>';
-    var insert3='<div class="non-frac tab"><input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here"><input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here"></div>'
-    var insert4='<button class="btn btn-primary btn-sm flip2" id="1" type="button" onclick="reverse(this.id)">&#8635</button>'
+    var insert1='<div class="btn btn-primary btn-sm multiply">x</div><div class="fraction"><input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here"><input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here"></div>';
+    var insert2='<div class="non-frac tab"><input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here"><input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here"></div>'
+    var insert3='<button class="btn btn-primary btn-sm flip2" id="1" type="button" onclick="reverse(this.id)">&#8635</button>'
     $(document).ready(function(){
       $(".add").click(function(){
         $(".equals").before(insert1);
-        $(".equals").before(insert2);
-        $(".tab").last().after(insert3);
-        $(".flip2").last().after(insert4);
+        $(".non-frac").last().after(insert2);
+        $(".flip2").last().after(insert3);
         $(".flip2").last().attr('id',idnum);
         idnum++;
         increment++;
+        $(".textbox").droppable({
+        drop: function (event, ui) {
+        this.value = $(ui.draggable).attr('id');
+      }
+    });
       });
     });
 
@@ -300,7 +298,7 @@
 }
 .fraction{
   border-bottom: 2px solid black;
-  height:39px;
+  height:40px;
   width: 296px;
   display:inline-block;
   padding-bottom: 10px;
@@ -309,15 +307,15 @@
   height:34px;
   width: 296px;
   display:inline-block;
-  margin-top: -10px;
+  margin-top: -12px;
 }
 .tab{
-  margin-left:40px;
+  margin-left:32px;
 }
 .multiply{
-  margin-left:4px;
-  margin-top:31px;
-  position:absolute;
+  margin-left:0px;
+  margin-top:10px;
+  position:static;
   cursor:auto;
   color:white;
   background-color: black;
@@ -356,15 +354,13 @@
   border-color: black;
 }
 #slide-wrap {
-    margin:0 auto;
-    overflow: auto; 
-    background:#fff;
+    margin:0;
+    overflow: auto;
 }
 #inner-wrap {
     float:left;
     margin-right:-30000px;
     padding-left:20px;        
-    width: auto;
 }
 
 div.horizontal-fields input,
@@ -376,7 +372,6 @@ div.horizontal-fields label {
 
 .horizontal-fields {
     display: block;
-    width:auto;
-}
+  }
 	</style>
 </html>
