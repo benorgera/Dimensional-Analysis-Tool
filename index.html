@@ -210,27 +210,27 @@
                   <div id="inner-wrap">
                       <div class="horizontal-fields">
                         <div class="fraction">
-                          <input type= "number" name="value" class="form-control col-xs-2 top" placeholder= "Enter a value here">
-                          <input type="text" name="unit" class="form-control textbox col-xs-2 top" placeholder="Drag unit here">
+                          <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
+                          <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
                         </div>
                           <!--Start of div to be copied-->
                         <div class="btn btn-primary btn-sm multiply">x</div>
                         <div class="fraction tab">
-                          <input type= "number" name="value" class="form-control col-xs-2 top" placeholder= "Enter a value here">
-                          <input type="text" name="unit" class="form-control textbox col-xs-2 top" placeholder="Drag unit here">
+                          <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
+                          <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
                         </div>
                          <!--This is where inserted divs should go-->
                         <div class="btn btn-primary btn-sm equals">=</div>
                       </div>
                       <div class="horizontal-fields">
                         <div class="non-frac">
-                          <input type= "number" name="value" class="form-control col-xs-2 bottom" placeholder= "Enter a value here">
-                          <input type="text" name="unit" class="form-control textbox col-xs-2 bottom" placeholder="Drag unit here">
+                          <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
+                          <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
                         </div>
                           <!--Start of div to be copied-->
                         <div class="non-frac tab">
-                          <input type= "number" name="value" class="form-control col-xs-2 bottom" placeholder= "Enter a value here">
-                          <input type="text" name="unit" class="form-control textbox col-xs-2 bottom" placeholder="Drag unit here">
+                          <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
+                          <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
                         </div>
                           <!--This is where inserted divs should go-->
                       </div>
@@ -243,7 +243,7 @@
               </div>
           </fieldset>
       </form>
-      <div class="btn btn-primary btn-sm add" onclick="add()">Add another multiplicand</div>
+      <div class="btn btn-primary btn-sm add">Add another multiplicand</div>
        <footer align="center">© Jacob Kalodner 2016. All Rights Reserved. </footer>
 	</body>
 	<script type="text/javascript">
@@ -268,62 +268,29 @@
       document.getElementsByName("unit")[parseInt(id)].value=document.getElementsByName("unit")[parseInt(id)+2].value;;
       document.getElementsByName("unit")[parseInt(id)+2+increment].value=x;
     };
+    var insert1='<div class="btn btn-primary btn-sm multiply">x</div>';
+    var insert2='<div class="fraction tab"><input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here"><input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here"></div>';
+    var insert3='<div class="non-frac tab"><input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here"><input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here"></div>'
+    var insert4='<button class="btn btn-primary btn-sm flip2" id="1" type="button" onclick="reverse(this.id)">&#8635</button>'
+    $(document).ready(function(){
+      $(".add").click(function(){
+        $(".equals").before(insert1);
+        $(".equals").before(insert2);
+        $(".tab").last().after(insert3);
+        $(".flip2").last().after(insert4);
+        $(".flip2").last().attr('id',idnum);
+        idnum++;
+        increment++;
+      });
+    });
 
-
-    /*function add(){
-      var div=document.createElement("div");
-      div.textContent="x";
-      div.className="btn btn-primary btn-sm multiply";
-      document.getElementsByName("insert").appendChild(div);
-
-      var div2=document.createElement("div");
-      div2.className="fraction tab";
-      var input=document.createElement("input");
-      input.className="form-control col-xs-2 top";
-      input.type="number";
-      input.name="value";
-      input.placeholder="Enter a value here";
-      div2.appendChild(input);
-      var input2=document.createElement("input");
-      input2.className="form-control textbox col-xs-2 top";
-      input2.type="text";
-      input2.name="unit";
-      input2.placeholder="Drag unit here";
-      div2.appendChild(input2);
-      document.getElementById("insert").appendChild(div2);
-
-      var div3=document.createElement("div");
-      div3.className="non-frac tab";
-      var input3=document.createElement("input");
-      input3.className="form-control col-xs-2 bottom";
-      input3.type="number";
-      input3.name="value";
-      input3.placeholder="Enter a value here";
-      div3.appendChild(input3);
-      var input4=document.createElement("input");
-      input4.className="form-control textbox col-xs-2 bottom";
-      input4.type="text";
-      input4.name="unit";
-      input4.placeholder="Drag unit here";
-      div3.appendChild(input4);
-      document.getElementById("insert2").appendChild(div3);
-
-      var flipbut=document.createElement("button");
-      flipbut.textContent=String.fromCharCode(0x21BB);
-      flipbut.className="btn btn-primary btn-sm flip2";
-      flipbut.onclick="reverse(this.id)";
-      flipbut.id=idnum;
-      idnum++;
-      increment++;
-      document.getElementById("butinsert").appendChild(flipbut);
-    }*/
 	</script>
 	<style type="text/css">
 .btns{
   cursor: move;
   z-index:1;
 }
-.top{
+.cell{
   padding-bottom: 5px;
   margin-bottom: 5px;
   padding-left: 0px;
@@ -343,14 +310,6 @@
   width: 296px;
   display:inline-block;
   margin-top: -10px;
-}
-.bottom{
-  padding-bottom: 5px;
-  margin-bottom: 5px;
-  padding-left: 0px;
-  padding-right: 0px;
-  width:296px;
-  position:static;
 }
 .tab{
   margin-left:40px;
