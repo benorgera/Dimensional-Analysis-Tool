@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Dimensional Analysis</title>
+    <link rel="icon" href="http://www.veryicon.com/icon/ico/Application/Long%20Shadow%20Media/Calculator.ico">
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+  		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+	</head>
+	<body>
+		<div class="text-center">
+			<h1>Fes's Dimensional Analysis Learning Tool</h1>
+			<p>This is a tool designed to teach dimensional analysis.</p>
+		</div>
+
+		<div class="container">
+  			<h2>Units</h2>
+  			<ul class="nav nav-tabs">
+    			<li class="active"><a data-toggle="tab" href="#length">Length</a></li>
+    			<li><a data-toggle="tab" href="#area">Area</a></li>
+    			<li><a data-toggle="tab" href="#volume">Volume</a></li>
+    			<li><a data-toggle="tab" href="#time">Time</a></li>
+    			<li><a data-toggle="tab" href="#temp">Temperature</a></li>
+    			<li><a data-toggle="tab" href="#mass">Mass</a></li>
+    			<li><a data-toggle="tab" href="#force">Force</a></li>
+    			<li><a data-toggle="tab" href="#pressure">Pressure</a></li>
+    			<li><a data-toggle="tab" href="#energy">Energy</a></li>
+          <li><a data-toggle="tab" href="#constants">Constants</a></li>          
+  			</ul>
+
+  			<div class="tab-content">
+    			<div id="length" class="tab-pane fade in active">
+            <h4>SI Units</h4>
+      			<ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="mm">mm</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="cm">cm</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="dm">dm</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="m">m</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="dam">dam</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="hm">hm</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="km">km</li>
+            </ul>
+            <h4>Imperial</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="in">in</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="ft">ft</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="yd">yd</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="mi">mi</li>
+            </ul>
+            <h4>Other Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="AU">AU</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="ly">ly</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="pc">pc</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="𝓁P">𝓁P</li>
+            </ul>
+    			</div>
+    		  <div id="area" class="tab-pane fade">
+            <h4>SI Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="ha">ha</li>
+            </ul>
+            <h4>Imperial Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="ac">ac</li>
+            </ul>
+   			  </div>
+    		  <div id="volume" class="tab-pane fade">
+    			 <h4>SI Units</h4>
+           <ul>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="mL">mL</li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="L">L</li>
+           </ul>
+           <h4>Imperial Units</h4>
+           <ul>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="oz">oz</li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="c">c</li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="pt">pt</li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="qt">qt</li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="gal">gal</li>
+           </ul>
+    		  </div>
+    		  <div id="time" class="tab-pane fade">
+    			 <h4>Standard Units</h4>
+           <ul>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="s">s</li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="min">min</li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="hr">hr</li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="day">day</li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="week">week</li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="month">month</li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="year">year</li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="decade">decade</li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="century">century</li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="millenium">millenium</li>
+           </ul>
+           <h4>Other Units</h4>
+           <ul>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="planck seconds">t<sub>P</sub></li>
+            <li draggable="true" class="btn btn-primary btn-sm btns" id="fortnight">fortnight</li>
+           </ul>
+    		  </div>
+    		  <div id="temp" class="tab-pane fade">
+            <h4>SI Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="degrees Celcius">&degC</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="K">K</li>
+            </ul>
+            <h4>Imperial Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="degrees Fahrenheit">&degF</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="R">R</li>
+            </ul>
+    		  </div>
+    		  <div id="mass" class="tab-pane fade">
+            <h4>SI Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="mg">mg</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="cg">cg</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="dg">dg</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="g">g</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="dag">dag</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="hg">hg</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="kg">kg</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="t">t</li>
+            </ul>
+            <h4>Imperial Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="oz">oz</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="sl">sl</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="lb">lb</li>
+            </ul>
+            <h4>Other Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="amu">amu</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="planck mass"><i>m</i><sub>P</sub></li>
+            </ul>
+    	   	</div>
+    	   	<div id="force" class="tab-pane fade">
+            <h4>SI Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="N">N</li>
+            </ul>
+            <h4>Imperial Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="lb">lb</li>
+            </ul>
+    		  </div>
+    		  <div id="pressure" class="tab-pane fade">
+            <h4>SI Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="Pa">Pa</li>
+            </ul>
+            <h4>Other Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="bar">bar</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="atm">atm</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="torr">torr</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="psi">psi</li>
+            </ul>
+    		  </div>
+    		  <div id="energy" class="tab-pane fade">
+            <h4>SI Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="J">J</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="kJ">kJ</li>
+            </ul>
+            <h4>Imperial Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="ft·lbf">ft·lbf</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="btu">btu</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="thm">thm</li>
+            </ul>
+            <h4>Other Units</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="cal">cal</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="Cal">Cal</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="kWh">kWh</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns" id="eV">eV</li>
+            </ul>
+    		  </div>
+          <div id="constants" class="tab-pane fade">
+            <h4>Chemistry</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns"><i>N</i><sub>A</sub></li>
+              <li draggable="true" class="btn btn-primary btn-sm btns">R</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns">e<sup>-</sup></li>
+              <li draggable="true" class="btn btn-primary btn-sm btns">me</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns">mp</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns">mn</li>
+            </ul>
+            <h4>Physics</h4>
+            <ul>
+              <li draggable="true" class="btn btn-primary btn-sm btns"><i>k</i><sub>e</sub></li>
+              <li draggable="true" class="btn btn-primary btn-sm btns">G</li>
+              <li draggable="true" class="btn btn-primary btn-sm btns"><i>μ</i><sub>0</sub></li>
+              <li draggable="true" class="btn btn-primary btn-sm btns"><i>ε</i><sub>0</sub></li>
+              <li draggable="true" class="btn btn-primary btn-sm btns"><i>h</i></li>         
+            </ul>
+          </div>
+  		   </div>
+         <br>
+         <p>Drag and drop units from the above table to the below boxes, and enter your own values. You may also enter units not provided above, but they will not be automatically converted.</p>
+         <form class="form-inline">
+          <fieldset>
+              <div id="slide-wrap">
+                  <div id="inner-wrap">
+                      <div class="horizontal-fields">
+                        <div class="fraction">
+                          <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
+                          <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
+                        </div>
+                        <div class="btn btn-primary btn-sm multiply">x</div>
+                        <div class="fraction">
+                          <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
+                          <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
+                        </div>
+                        <div class="btn btn-primary btn-sm equals">=</div>
+                      </div>
+                      <div class="horizontal-fields">
+                        <div class="non-frac">
+                          <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
+                          <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
+                        </div>
+                        <div class="non-frac tab">
+                          <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
+                          <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
+                        </div>
+                      </div>
+                      <div class="horizontal-fields">
+                        <button class="btn btn-primary btn-sm flip1" id="0" type="button" onclick="reverse(this.id)">&#8635</button>
+                        <button class="btn btn-primary btn-sm flip2" id="1" type="button" onclick="reverse(this.id)">&#8635</button>
+                      </div>
+                 </div>
+              </div>
+          </fieldset>
+      </form>
+      <div class="btn btn-primary btn-sm add">Add another multiplicand</div>
+       <footer align="center">© Jacob Kalodner 2016. All Rights Reserved. </footer>
+	</body>
+	<script type="text/javascript">
+    $('ul li').draggable({
+      revert: true,
+      helper: 'clone'
+    });
+
+    $(".textbox").droppable({
+      drop: function (event, ui) {
+        this.value = $(ui.draggable).attr('id');
+      }
+    });
+    var idnum=2;
+    var increment=0;
+
+    function reverse(id){
+      var z=document.getElementsByName("value")[parseInt(id)].value;
+      document.getElementsByName("value")[parseInt(id)].value=document.getElementsByName("value")[parseInt(id)+2+increment].value;;
+      document.getElementsByName("value")[parseInt(id)+2+increment].value=z;
+      var x=document.getElementsByName("unit")[parseInt(id)].value;
+      document.getElementsByName("unit")[parseInt(id)].value=document.getElementsByName("unit")[parseInt(id)+2].value;;
+      document.getElementsByName("unit")[parseInt(id)+2+increment].value=x;
+    };
+    var insert1='<div class="btn btn-primary btn-sm multiply">x</div><div class="fraction"><input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here"><input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here"></div>';
+    var insert2='<div class="non-frac tab"><input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here"><input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here"></div>'
+    var insert3='<button class="btn btn-primary btn-sm flip2" id="1" type="button" onclick="reverse(this.id)">&#8635</button>'
+    $(document).ready(function(){
+      $(".add").click(function(){
+        $(".equals").before(insert1);
+        $(".non-frac").last().after(insert2);
+        $(".flip2").last().after(insert3);
+        $(".flip2").last().attr('id',idnum);
+        idnum++;
+        increment++;
+        $(".textbox").droppable({
+        drop: function (event, ui) {
+        this.value = $(ui.draggable).attr('id');
+      }
+    });
+      });
+    });
+
+	</script>
+	<style type="text/css">
+.btns{
+  cursor: move;
+  z-index:1;
+}
+.cell{
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  padding-left: 0px;
+  padding-right: 0px;
+  width:296px;
+  position:static;
+}
+.fraction{
+  border-bottom: 2px solid black;
+  height:40px;
+  width: 296px;
+  display:inline-block;
+  padding-bottom: 10px;
+}
+.non-frac{
+  height:34px;
+  width: 296px;
+  display:inline-block;
+  margin-top: -12px;
+}
+.tab{
+  margin-left:32px;
+}
+.multiply{
+  margin-left:0px;
+  margin-top:10px;
+  position:static;
+  cursor:auto;
+  color:white;
+  background-color: black;
+  border-color: black;
+}
+.multiply:hover{
+  background-color:black;
+  border-color: black;
+}
+.flip1{
+  position: static;
+  margin-left: 132px;
+}
+.flip2{
+  position:static;
+  margin-left: 304px;
+  text-align:center;
+  vertical-align: top;
+}
+.add{
+  margin-left:6px;
+  margin-top:25px;
+  display: block;
+}
+.equals{
+  margin-top: 3px;
+  margin-left: 5px;
+  position: static;
+  cursor:auto;
+  color:white;
+  background-color: black;
+  border-color: black;
+}
+.equals:hover{
+  background-color:black;
+  border-color: black;
+}
+#slide-wrap {
+    margin:0;
+    overflow: auto;
+}
+#inner-wrap {
+    float:left;
+    margin-right:-30000px;
+    padding-left:20px;        
+}
+
+div.horizontal-fields input,
+div.horizontal-fields textarea,
+div.horizontal-fields select,
+div.horizontal-fields label {
+    width: auto;
+}
+
+.horizontal-fields {
+    display: block;
+  }
+	</style>
+</html>
