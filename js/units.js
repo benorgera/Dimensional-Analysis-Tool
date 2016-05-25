@@ -1,6 +1,6 @@
-module.exports = {
-  const units = {
-    "Length": {
+module.exports = [
+  const units = [
+    "Length": [
       "ct": "m",
       "m": 1,
       "mm": 0.001,
@@ -17,9 +17,9 @@ module.exports = {
       "ly": 9.461e15,
       "pc": 3.086e16,
       "ℓ<sub>P</sub>": 1.6e-35
-    },
+    ],
 
-    "Area": {
+    "Area": [
       "ct": "m<sup>2</sup>",
       "m<sup>2</sup>": 1,
       "mm<sup>2</sup>": 0.000001,
@@ -34,9 +34,9 @@ module.exports = {
       "mi<sup>2</sup>": 2589988.110336,
       "ac": 4046.8564224,
       "ha": 10000
-    },
+    ],
     
-    "Volume": {
+    "Volume": [
       "ct": "L",
       "L": 1,
       "mL": 0.001,
@@ -64,9 +64,9 @@ module.exports = {
       "qt<sub>SI</sub>": 1.13652,
       "cup<sub>SI</sub>": 0.284131,
       "fl oz<sub>SI</sub>": 0.0284131
-    },
+    ],
 
-    "Time": {
+    "Time": [
       "ct": "s",
       "s": 1,
       "min": 60,
@@ -80,17 +80,17 @@ module.exports = {
       "millenium": 31557600000,
       "fortnight": 1209600,
       "t<sub>P</sub>": 5.39056e-44
-    },
+    ],
 
-    "Temperature": {
+    "Temperature": [
       "ct": NaN,
       "K": NaN,
       "R": NaN,
       "°C": NaN,
       "°F": NaN
-    },
+    ],
 
-    "Mass": {
+    "Mass": [
       "ct": "g",
       "g": 1,
       "mg": 0.001,
@@ -106,25 +106,25 @@ module.exports = {
       "lb": 453.592,
       "amu": 1.661e-24,
       "m<sub>P</sub>": 2.17645e-5
-    },
+    ],
 
-    "Force": {
+    "Force": [
       "ct": "N",
       "N": 1,
       "lb": 4.44822162825,
       "F<sub>P</sub>": 1.21027e44
-    },
+    ],
 
-    "Pressure": {
+    "Pressure": [
       "ct": "Pa",
       "Pa": 1,
       "bar": 100000,
       "atm": 101325,
       "psi": 6894.757,
       "torr": 133.322
-    },
+    ],
 
-    "Energy": {
+    "Energy": [
       "ct": "J",
       "J": 1,
       "kJ": 1000,
@@ -137,15 +137,15 @@ module.exports = {
       "Wh": 3600,
       "eV": 1.6022e-19,
       "MeV": 1.6022e-13
-    },
+    ],
 
-    // "Digital Storage": {
+    // "Digital Storage": [
     //   "ct": "byte",
     //   "byte": 1,
     //   "bit": 0.125,
     //   "KB": 1024,
     //   "MB": 
     //   "GB": 
-    // }
-  };
-}
+    // ]
+  ];
+]
