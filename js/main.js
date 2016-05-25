@@ -6,5 +6,4 @@
 	});
 
 	var units = require('./units.js').units;
-	var units2 = require('./units.js')();
 }}
