@@ -1,9 +1,10 @@
-{function() {
+
+(function(){
 	var app = angular.module('dimApp', []);
+
+	$.getScript(".units.js");
 
 	app.controller('UnitsController', function() {
 		this.tree = units;
 	});
-
-	var units = require('./units.js').units;
-}}
+})();
