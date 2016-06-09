@@ -19,18 +19,18 @@
 		<div class="container">
   			<h2>Units</h2>
   			<ul class="nav nav-tabs">
-    			<li class="active"><a data-toggle="tab" href="#length">Length</a></li>
-    			<li><a data-toggle="tab" href="#area">Area</a></li>
-    			<li><a data-toggle="tab" href="#volume">Volume</a></li>
-    			<li><a data-toggle="tab" href="#time">Time</a></li>
-    			<li><a data-toggle="tab" href="#mass">Mass</a></li>
-    			<li><a data-toggle="tab" href="#force">Force</a></li>
-    			<li><a data-toggle="tab" href="#pressure">Pressure</a></li>
-    			<li><a data-toggle="tab" href="#energy">Energy</a></li>         
+    			<li class="active"><a data-toggle="tab" href="#0">Length</a></li>
+    			<li><a data-toggle="tab" href="#1">Area</a></li>
+    			<li><a data-toggle="tab" href="#2">Volume</a></li>
+    			<li><a data-toggle="tab" href="#3">Time</a></li>
+    			<li><a data-toggle="tab" href="#4">Mass</a></li>
+    			<li><a data-toggle="tab" href="#5">Force</a></li>
+    			<li><a data-toggle="tab" href="#6">Pressure</a></li>
+    			<li><a data-toggle="tab" href="#7">Energy</a></li>         
   			</ul>
 
   			<div class="tab-content">
-    			<div id="length" class="tab-pane fade in active">
+    			<div id="0" class="tab-pane fade in active">
             <h4>SI Units</h4>
       			<ul class="SI">
               <!--<li draggable="true" class="btn btn-primary btn-sm btns" id="mm">mm</li>
@@ -56,7 +56,7 @@
               <li draggable="true" class="btn btn-primary btn-sm btns" id="𝓁P">𝓁P</li>-->
             </ul>
     			</div>
-    		  <div id="area" class="tab-pane fade">
+    		  <div id="1" class="tab-pane fade">
             <h4>SI Units</h4>
             <ul class="SI">
              <!-- <li draggable="true" class="btn btn-primary btn-sm btns" id="ha">ha</li>-->
@@ -66,7 +66,7 @@
               <!--<li draggable="true" class="btn btn-primary btn-sm btns" id="ac">ac</li>-->
             </ul>
    			  </div>
-    		  <div id="volume" class="tab-pane fade">
+    		  <div id="2" class="tab-pane fade">
     			 <h4>SI Units</h4>
            <ul class="SI">
             <!--<li draggable="true" class="btn btn-primary btn-sm btns" id="mL">mL</li>
@@ -81,7 +81,7 @@
             <li draggable="true" class="btn btn-primary btn-sm btns" id="gal">gal</li>-->
            </ul>
     		  </div>
-    		  <div id="time" class="tab-pane fade">
+    		  <div id="3" class="tab-pane fade">
            <ul>
             <!--<li draggable="true" class="btn btn-primary btn-sm btns" id="s">s</li>
             <li draggable="true" class="btn btn-primary btn-sm btns" id="min">min</li>
@@ -97,7 +97,7 @@
             <li draggable="true" class="btn btn-primary btn-sm btns" id="fortnight">fortnight</li>-->
            </ul>
     		  </div>
-    		  <div id="mass" class="tab-pane fade">
+    		  <div id="4" class="tab-pane fade">
             <h4>SI Units</h4>
             <ul class="SI">
               <!--<li draggable="true" class="btn btn-primary btn-sm btns" id="mg">mg</li>
@@ -121,7 +121,7 @@
               <li draggable="true" class="btn btn-primary btn-sm btns" id="planck mass"><i>m</i><sub>P</sub></li>-->
             </ul>
     	   	</div>
-    	   	<div id="force" class="tab-pane fade">
+    	   	<div id="5" class="tab-pane fade">
             <h4>SI Units</h4>
             <ul class="SI">
               <!--<li draggable="true" class="btn btn-primary btn-sm btns" id="N">N</li>-->
@@ -131,7 +131,7 @@
               <!--<li draggable="true" class="btn btn-primary btn-sm btns" id="lb">lb</li>-->
             </ul>
     		  </div>
-    		  <div id="pressure" class="tab-pane fade">
+    		  <div id="6" class="tab-pane fade">
             <h4>SI Units</h4>
             <ul class="SI">
               <!--<li draggable="true" class="btn btn-primary btn-sm btns" id="Pa">Pa</li>-->
@@ -144,7 +144,7 @@
               <li draggable="true" class="btn btn-primary btn-sm btns" id="psi">psi</li>-->
             </ul>
     		  </div>
-    		  <div id="energy" class="tab-pane fade">
+    		  <div id="7" class="tab-pane fade">
             <h4>SI Units</h4>
             <ul class="SI">
               <!--<li draggable="true" class="btn btn-primary btn-sm btns" id="J">J</li>
@@ -173,12 +173,12 @@
                   <div id="inner-wrap">
                       <div class="horizontal-fields">
                         <div class="fraction">
-                          <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
+                          <input type= "number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here">
                           <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
                         </div>
                         <div class="btn btn-primary btn-sm multiply">x</div>
                         <div class="fraction">
-                          <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
+                          <input type= "number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here">
                           <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
                         </div>
                         <div class="btn btn-primary btn-sm equals">=</div>
@@ -189,11 +189,11 @@
                       </div>
                       <div class="horizontal-fields">
                         <div class="non-frac">
-                          <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
+                          <input type= "number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here">
                           <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
                         </div>
                         <div class="non-frac tab">
-                          <input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here">
+                          <input type= "number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here">
                           <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here">
                         </div>
                         <div class="non-frac tab2">
@@ -214,22 +214,219 @@
       <footer align="center">© Jacob Kalodner 2016. All Rights Reserved. </footer>
 	</body>
 	<script type="text/javascript">
-    $(document).ready(function(){
-      $('#length .SI').append('<li draggable="true" class="btn btn-primary btn-sm btns" id="mm">mm</li>'); //use this jquery function to write in all the stuff from units.js- modify it b/c prints everywhere, should use a for loop and need to use that json array
-      $('ul li').draggable({ //makes elements draggable
-        revert: true,
-        helper: 'clone'
-      });
-      $(".textbox").droppable({ //makes textboxes droppable
-        drop: function (event, ui) {
-        this.value = $(ui.draggable).attr('id');
-        }
-      });
-    });
+    var units = [
+      [
+        {"Html":"m","cvt":1, "type":"SI"},
+        {"Html":"mm", "cvt:":0.001, "type":"SI"},
+        {"Html":"cm", "cvt":0.01, "type":"SI"},
+        {"Html":"dm", "cvt":0.1, "type":"SI"},
+        {"Html":"dam", "cvt":10, "type":"SI"},
+        {"Html":"hm", "cvt":100, "type":"SI"},
+        {"Html":"km", "cvt":1000, "type":"SI"},
+        {"Html":"in", "cvt":0.0254, "type":"US"},
+        {"Html":"ft", "cvt":0.3048, "type":"US"},
+        {"Html":"yd", "cvt":0.9144, "type":"US"},
+        {"Html":"mi", "cvt":1609.34, "type":"US"},
+        {"Html":"AU", "cvt":1.496e11, "type":"Other"},
+        {"Html":"ly", "cvt":9.461e15, "type":"Other"},
+        {"Html":"pc", "cvt":3.086e16, "type":"Other"},
+        {"Html":"ℓ<sub>P</sub>", "cvt":1.6e-35, "type":"Other"}
+      ],
 
+      [
+        {"Html":"m<sup>2</sup>", "cvt":1, "type":"SI"},
+        {"Html":"mm<sup>2</sup>", "cvt":0.000001, "type":"SI"},
+        {"Html":"cm<sup>2</sup>", "cvt":0.0001, "type":"SI"},
+        {"Html":"dm<sup>2</sup>", "cvt":0.01, "type":"SI"},
+        {"Html":"dam<sup>2</sup>", "cvt":100, "type":"SI"},
+        {"Html":"hm<sup>2</sup>", "cvt":10000, "type":"SI"},
+        {"Html":"km<sup>2</sup>", "cvt":1000000, "type":"SI"},
+        {"Html":"in<sup>2</sup>", "cvt":0.00064516, "type":"US"},
+        {"Html":"ft<sup>2</sup>", "cvt":0.09290304, "type":"US"},
+        {"Html":"yd<sup>2</sup>", "cvt":0.83612736, "type":"US"},
+        {"Html":"mi<sup>2</sup>", "cvt":2589988.110336, "type":"US"},
+        {"Html":"ac", "cvt":4046.8564224, "type":"Other"},
+        {"Html":"ha", "cvt":10000, "type":"Other"}
+      ],
+    
+      [
+        {"Html":"L", "cvt":1, "type":"SI"},
+        {"Html":"mL", "cvt":0.001, "type":"SI"},
+        {"Html":"cL", "cvt":0.01, "type":"SI"},
+        {"Html":"dL", "cvt":0.1, "type":"SI"},
+        {"Html":"daL", "cvt":10, "type":"SI"},
+        {"Html":"hL", "cvt":100, "type":"SI"},
+        {"Html":"kL", "cvt":1000, "type":"SI"},
+        {"Html":"m<sup>3</sup>", "cvt":1000, "type":"SI"},
+        {"Html":"mm<sup>3</sup>", "cvt":1e-6, "type":"SI"},
+        {"Html":"cm<sup>3</sup>", "cvt":0.001, "type":"SI"},
+        {"Html":"dm<sup>3</sup>", "cvt":1, "type":"SI"},
+        {"Html":"dam<sup>3</sup>", "cvt":1000000, "type":"SI"},
+        {"Html":"hm<sup>3</sup>", "cvt":1000000000, "type":"SI"},
+        {"Html":"km<sup>3</sup>", "cvt":1000000000000, "type":"SI"},
+        {"Html":"gal<sub>SI</sub>", "cvt":4.54609, "type":"SI"},
+        {"Html":"pt<sub>SI</sub>", "cvt":0.56826125, "type":"SI"},
+        {"Html":"qt<sub>SI</sub>", "cvt":1.13652, "type":"SI"},
+        {"Html":"cup<sub>SI</sub>", "cvt":0.284131, "type":"SI"},
+        {"Html":"fl oz<sub>SI</sub>", "cvt":0.0284131, "type":"SI"},
+        {"Html":"in<sup>3</sup>", "cvt":0.016387064, "type":"US"},
+        {"Html":"ft<sup>3</sup>", "cvt":28.316846592, "type":"US"},
+        {"Html":"gal<sub>US</sub>", "cvt":3.785411784, "type":"US"},
+        {"Html":"pt<sub>US</sub>", "cvt":0.473176473, "type":"US"},
+        {"Html":"qt<sub>US</sub>", "cvt":0.946353, "type":"US"},
+        {"Html":"cup<sub>US</sub>", "cvt":0.236588, "type":"US"},
+        {"Html":"fl oz<sub>US</sub>", "cvt":0.0295735, "type":"US"}
+      ],
+
+      [
+        {"Html":"s", "cvt":1},
+        {"Html":"min", "cvt":60},
+        {"Html":"hr", "cvt":3600},
+        {"Html":"day", "cvt":86400},
+        {"Html":"week", "cvt":604800},
+        {"Html":"month", "cvt":2.6298e6},
+        {"Html":"year", "cvt":31557600},
+        {"Html":"decade", "cvt":315576000},
+        {"Html":"century", "cvt":3155760000},
+        {"Html":"millenium", "cvt":31557600000},
+        {"Html":"fortnight", "cvt":1209600},
+        {"Html":"t<sub>P</sub>", "cvt":5.39056e-44}
+      ],
+
+      [
+        {"Html":"g", "cvt":1, "type":"SI"},
+        {"Html":"mg", "cvt":0.001, "type":"SI"},
+        {"Html":"cg", "cvt":0.01, "type":"SI"},
+        {"Html":"dg", "cvt":0.1, "type":"SI"},
+        {"Html":"dag", "cvt":10, "type":"SI"},
+        {"Html":"hg", "cvt":100, "type":"SI"},
+        {"Html":"kg", "cvt":1000, "type":"SI"},
+        {"Html":"ton<sub>SI</sub>", "cvt":1000000, "type":"SI"},
+        {"Html":"ton<sub>US</sub>", "cvt":907184.74, "type":"US"},
+        {"Html":"oz", "cvt":28.35, "type":"US"},
+        {"Html":"sl", "cvt":14593.903, "type":"US"},
+        {"Html":"lb", "cvt":453.592, "type":"US"},
+        {"Html":"amu", "cvt":1.661e-24, "type":"Other"},
+        {"Html":"m<sub>P</sub>", "cvt":2.17645e-5, "type":"Other"}
+      ],
+
+      [
+        {"Html":"N", "cvt":1, "type":"SI"},
+        {"Html":"lb", "cvt":4.44822162825, "type":"US"},
+        {"Html":"F<sub>P</sub>", "cvt":1.21027e44, "type":"Other"}
+      ],
+
+      [
+        {"Html":"Pa", "cvt":1, "type":"SI"},
+        {"Html":"bar", "cvt":100000, "type":"Other"},
+        {"Html":"atm", "cvt":101325, "type":"Other"},
+        {"Html":"psi", "cvt":6894.757, "type":"Other"},
+        {"Html":"torr", "cvt":133.322, "type":"Other"}
+      ],
+
+      [
+        {"Html":"J", "cvt":1, "type":"SI"},
+        {"Html":"kJ", "cvt":1000, "type":"SI"},
+        {"Html":"ft·lb<sub>f</sub>", "cvt":1.356, "type":"US"}, 
+        {"Html":"btu", "cvt":1055.056, "type":"US"},
+        {"Html":"thm", "cvt":105480400, "type":"US"},
+        {"Html":"cal", "cvt":4.184, "type":"Other"},
+        {"Html":"kcal", "cvt":4184, "type":"Other"},
+        {"Html":"kWh", "cvt":3.6e6, "type":"Other"},
+        {"Html":"Wh", "cvt":3600, "type":"Other"},
+        {"Html":"eV", "cvt":1.6022e-19, "type":"Other"},
+        {"Html":"MeV", "cvt":1.6022e-13, "type":"Other"}
+      ]
+    ];
 
     var idnum=2;
     var increment=0; //makes sure the reverses work correctly
+    //info for add button
+    var insert1='<div class="btn btn-primary btn-sm multiply">x</div><div class="fraction"><input type= "number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here"><input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here"></div>';
+    var insert2='<div class="non-frac tab"><input type= "number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here"><input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here"></div>'
+    var insert3='<button class="btn btn-primary btn-sm flip2" id="1" type="button" onclick="reverse(this.id)">&#8635</button>'
+
+    $(document).ready(function(){
+      for(i=0;i<units.length;i++){ //loads all the buttons
+        for(j=0;j<units[i].length;j++){
+          var x="#"+i;
+          if(units[i][j].type==="SI"){
+            $(x+' .SI').append('<li draggable="true" class="btn btn-primary btn-sm btns"></li>');
+            $(x+' ul li').last().attr('id',units[i][j].Html);
+            $(x+' ul li').last().html(units[i][j].Html);
+          }else if(units[i][j].type==="US"){
+            $(x+' .US').append('<li draggable="true" class="btn btn-primary btn-sm btns"></li>');
+            $(x+' ul li').last().attr('id',units[i][j].Html);
+            $(x+' ul li').last().html(units[i][j].Html);
+          }else if(units[i][j].type==="Other"){
+            $(x+' .other').append('<li draggable="true" class="btn btn-primary btn-sm btns"></li>');
+            $(x+' ul li').last().attr('id',units[i][j].Html);
+            $(x+' ul li').last().html(units[i][j].Html);
+          }else{
+            $(x+' ul').append('<li draggable="true" class="btn btn-primary btn-sm btns"></li>');
+            $(x+' ul li').last().attr('id',units[i][j].Html);
+            $(x+' ul li').last().html(units[i][j].Html);
+          }
+          $('ul li').draggable({ //makes elements draggable
+            revert: true,
+            helper: 'clone'
+          });
+        }
+      }
+      $('.add').click(function(){ //adds multiplicands
+        $('.equals').before(insert1);
+        $('.non-frac').last().before(insert2);
+        $('.flip2').last().after(insert3);
+        $('.flip2').last().attr('id',idnum);
+        $('.fraction div').each(function(){
+          $(this).html("");
+        });
+        $('.non-frac div').each(function(){
+          $(this).html("");
+        });
+        idnum++;
+        increment++;
+        $('.textbox').droppable({
+          drop: function (event, ui) {
+            this.value = $(ui.draggable).attr('id');
+          }
+        });
+      });
+      $('.compute').click(function(){ //this isn't working, need to play around with it
+        $('input').each(function(){
+          if(($(this).val())===""){
+            alert("Please fill all of the inputs.")
+            return false;
+          }
+        });
+        var z=1;
+        $('.horizontal-fields .fraction .num').each(function(){
+          z*=($(this).val());
+        });
+        $('.fraction div:first-child').html(z);
+        var y="";
+        $('.horizontal-fields .fraction .textbox').each(function(){
+          y+="("+($(this).val())+")";
+        });
+        $('.fraction div:nth-child(2)').html(y);
+        var a=1;
+        $('.horizontal-fields .non-frac .num').each(function(){
+          a*=($(this).val());
+        });
+        $('.non-frac div:first-child').html(a);
+        var b="";
+        $('.horizontal-fields .non-frac .textbox').each(function(){
+          b+="("+($(this).val())+")";
+        });
+        $('.non-frac div:nth-child(2)').html(b);
+      });
+    });
+
+    $('.textbox').droppable({ //makes textboxes droppable
+      drop: function (event, ui) {
+      this.value = $(ui.draggable).attr('id');
+      }
+    });
 
     function reverse(id){ //uses the id to figure out which boxes to switch
       var z=document.getElementsByName("value")[parseInt(id)].value;
@@ -240,31 +437,18 @@
       document.getElementsByName("unit")[parseInt(id)+2+increment].value=x;
     };
 
-    //all this following shit makes the add button work correctly
-    var insert1='<div class="btn btn-primary btn-sm multiply">x</div><div class="fraction"><input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here"><input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here"></div>';
-    var insert2='<div class="non-frac tab"><input type= "number" name="value" class="form-control col-xs-2 cell" placeholder= "Enter a value here"><input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here"></div>'
-    var insert3='<button class="btn btn-primary btn-sm flip2" id="1" type="button" onclick="reverse(this.id)">&#8635</button>'
     $(document).ready(function(){
-      $(".add").click(function(){
-        $(".equals").before(insert1);
-        $(".non-frac").last().before(insert2);
-        $(".flip2").last().after(insert3);
-        $(".flip2").last().attr('id',idnum);
-        idnum++;
-        increment++;
-        $(".textbox").droppable({
-          drop: function (event, ui) {
-            this.value = $(ui.draggable).attr('id');
-          }
-        });
-      });
+      
     });
 
 	</script>
 	<style type="text/css">
     ul{
+      margin-top: 10px;
       padding-left: 0px;
-      padding-right: 2px;
+    }
+    li{
+      margin-right: 4px;
     }
     .btns{
       cursor: move;
