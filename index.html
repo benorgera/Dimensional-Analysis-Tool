@@ -107,14 +107,14 @@
               <div id="slide-wrap">
                   <div id="inner-wrap">
                       <div class="horizontal-fields">
-                        <div class="fraction">
-                          <input type= "number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here" style="width:148px">
-                          <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here" style="width:148px">
+                        <div class="fraction input-group textbox">
+                          <input type="number" name="value" class="form-control col-xs-2 num cell" placeholder="Enter a value here">
+                          <div class="input-group-addon" name="unit">Drag unit here</div>
                         </div>
                         <div class="btn btn-primary btn-sm multiply">x</div>
-                        <div class="fraction">
-                          <input type= "number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here" style="width:148px">
-                          <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here" style="width:148px">
+                        <div class="fraction input-group textbox">
+                          <input type="number" name="value" class="form-control col-xs-2 num cell" placeholder="Enter a value here">
+                          <div class="input-group-addon" name="unit">Drag unit here</div>
                         </div>
                         <div class="btn btn-primary btn-sm equals">=</div>
                         <div class="fraction">
@@ -123,13 +123,13 @@
                         </div>
                       </div>
                       <div class="horizontal-fields">
-                        <div class="non-frac">
-                          <input type= "number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here" style="width:148px">
-                          <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here" style="width:148px">
+                        <div class="non-frac input-group textbox">
+                          <input type="number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here">
+                          <div class="input-group-addon" name="unit">Drag unit here</div>
                         </div>
-                        <div class="non-frac tab">
-                          <input type= "number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here" style="width:148px">
-                          <input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here" style="width:148px">
+                        <div class="non-frac input-group textbox">
+                          <input type="number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here">
+                          <div class="input-group-addon" name="unit">Drag unit here</div>
                         </div>
                         <div class="non-frac tab2">
                           <div class="form-control col-xs-2 cell" style="width:148px"></div>
@@ -146,7 +146,7 @@
       </form>
       <div class="btn btn-primary btn-sm add">Add another multiplicand</div>
       <div class="btn btn-primary btn-sm compute">Compute</div>
-      <footer class="text-center">© Jacob Kalodner 2016. All Rights Reserved. </footer>
+      <footer class="text-center">© Ben Orgera 2016. All Rights Reserved. </footer>
 	</body>
 	<script type="text/javascript">
     var units = [
@@ -277,31 +277,20 @@
     var idnum=2;
     var increment=0; //makes sure the reverses work correctly
     //info for add button
-    var insert1='<div class="btn btn-primary btn-sm multiply">x</div><div class="fraction"><input type= "number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here" style="width:148px"><input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here" style="width:148px"></div>';
-    var insert2='<div class="non-frac tab"><input type= "number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here" style="width:148px"><input type="text" name="unit" class="form-control textbox col-xs-2 cell" placeholder="Drag unit here" style="width:148px"></div>'
-    var insert3='<button class="btn btn-primary btn-sm flip2" id="1" type="button" onclick="reverse(this.id)">&#8635</button>'
+
+    var insert1='<div class="btn btn-primary btn-sm multiply">x</div><div class="fraction input-group textbox"><input type="number" name="value" class="form-control col-xs-2 num cell" placeholder="Enter a value here"><div class="input-group-addon" name="unit">Drag unit here</div></div>';
+     var insert2='<div class="non-frac tab input-group textbox"><input type="number" name="value" class="form-control col-xs-2 num cell" placeholder= "Enter a value here"><div class="input-group-addon" name="unit">Drag unit here</div></div>';
+    var insert3='<button class="btn btn-primary btn-sm flip2 textbox" id="1" type="button" onclick="reverse(this.id)">&#8635</button>';
+
 
     $(document).ready(function(){
       for(i=0;i<units.length;i++){ //loads all the buttons
         for(j=0;j<units[i].length;j++){
           var x="#"+i;
-          if(units[i][j].type==="SI"){
-            $(x+' .SI').append('<li draggable="true" class="btn btn-primary btn-sm btns"></li>');
-            $(x+' ul li').last().attr('id',units[i][j].Html);
-            $(x+' ul li').last().html(units[i][j].Html);
-          }else if(units[i][j].type==="US"){
-            $(x+' .US').append('<li draggable="true" class="btn btn-primary btn-sm btns"></li>');
-            $(x+' ul li').last().attr('id',units[i][j].Html);
-            $(x+' ul li').last().html(units[i][j].Html);
-          }else if(units[i][j].type==="Other"){
-            $(x+' .other').append('<li draggable="true" class="btn btn-primary btn-sm btns"></li>');
-            $(x+' ul li').last().attr('id',units[i][j].Html);
-            $(x+' ul li').last().html(units[i][j].Html);
-          }else{
-            $(x+' ul').append('<li draggable="true" class="btn btn-primary btn-sm btns"></li>');
-            $(x+' ul li').last().attr('id',units[i][j].Html);
-            $(x+' ul li').last().html(units[i][j].Html);
-          }
+          var s = (typeof units[i][j].type != 'undefined' && units[i][j].type.length === 2) ? (' .' + units[i][j].type) : (units[i][j].type === "Other" ? ' .other' : ' ul');
+          $(x+s).append('<li draggable="true" class="btn btn-primary btn-sm btns"></li>');
+          $(x+' ul li').last().attr('id',units[i][j].Html);
+          $(x+' ul li').last().html(units[i][j].Html);
           $('ul li').draggable({ //makes elements draggable
             revert: true,
             helper: 'clone'
@@ -313,17 +302,23 @@
         $('.non-frac').last().before(insert2);
         $('.flip2').last().after(insert3);
         $('.flip2').last().attr('id',idnum);
-        $('.fraction div').each(function(){
-          $(this).html("");
-        });
-        $('.non-frac div').each(function(){
-          $(this).html("");
-        });
+
+
+//not sure what these commands did, they seemed to just erase the units
+
+
+        // $('.fraction div').each(function(){
+        //   $(this).html("");
+        // });
+        // $('.non-frac div').each(function(){
+        //   $(this).html("");
+        // });
+
         idnum++;
         increment++;
         $('.textbox').droppable({
           drop: function (event, ui) {
-            this.value = $(ui.draggable).attr('id');
+            $(this).find("[name='unit']").html($(ui.draggable).attr('id'));
           }
         });
       });
@@ -359,13 +354,13 @@
 
     $('.textbox').droppable({ //makes textboxes droppable
       drop: function (event, ui) {
-      this.value = $(ui.draggable).attr('id');
+         $(this).find("[name='unit']").html($(ui.draggable).attr('id'));
       }
     });
 
     function reverse(id){ //uses the id to figure out which boxes to switch
       var z=document.getElementsByName("value")[parseInt(id)].value;
-      document.getElementsByName("value")[parseInt(id)].value=document.getElementsByName("value")[parseInt(id)+2+increment].value;;
+      document.getElementsByName("value")[parseInt(id)].value=document.getElementsByName("value")[parseInt(id)+2+increment].value;
       document.getElementsByName("value")[parseInt(id)+2+increment].value=z;
       var x=document.getElementsByName("unit")[parseInt(id)].value;
       document.getElementsByName("unit")[parseInt(id)].value=document.getElementsByName("unit")[parseInt(id)+2].value;;
