@@ -9,6 +9,8 @@
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
       <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=configured">
+      </script>
 	</head>
 	<body>
 		<div class="text-center">
@@ -116,10 +118,7 @@
                           <div class="input-group-addon" name="unit">Drag unit here</div>
                         </div>
                         <div class="btn btn-primary btn-sm equals">=</div>
-<!--                         <div class="numerator result">
-                          <div class="form-control col-xs-2 cell" style="width:148px"></div>
-                          <div class="form-control col-xs-2 cell" style="width:148px"></div>
-                        </div> -->
+                        <div class="answer"></div>
                       </div>
                       <div class="horizontal-fields" id="denominators">
                         <div class="denominator input-group textbox" id="denom0">
@@ -130,10 +129,6 @@
                           <input type="number" name="value" class="form-control col-xs-2 num cell denom-input" placeholder= "Enter a value here">
                           <div class="input-group-addon" name="unit">Drag unit here</div>
                         </div>
-<!--                         <div class="denominator tab result">
-                          <div class="form-control col-xs-2 cell" style="width:148px"></div>
-                          <div class="form-control col-xs-2 cell" style="width:148px"></div>
-                        </div> -->
                       </div>
                       <div class="horizontal-fields">
                         <button class="btn btn-primary btn-sm flip1" id="flip0" type="button" onclick="reverse(this.id)">&#8635</button>
@@ -311,7 +306,6 @@
         });
 
         numOfFracs++;
-        console.log(numOfFracs);
 
       });
 
@@ -359,10 +353,9 @@
         $(denominatorUnits).each(function() {
           denominatorString += '(' + this + ')';
         });
-
-        console.log(product);
-        console.log(numeratorString);
-        console.log(denominatorString);
+        var ans= product + "\\(\\frac{" + numeratorString + "}{" +denominatorString + "}\\)";
+        $('.answer').html(ans);
+        MathJax.Hub.Configured();
        });
     });
     
@@ -515,6 +508,14 @@
     .equals:hover{
       background-color:black;
       border-color: black;
+    }
+    .answer{
+      margin-top: 34px;
+      margin-left: 5px;
+      position:static;
+      display: inline-block;
+      font-size: 12px;
+      vertical-align: middle;
     }
     #slide-wrap {
         margin:0;
