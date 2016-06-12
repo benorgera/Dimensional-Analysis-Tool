@@ -101,7 +101,6 @@
     		  </div>
   		   </div>
          <br>
-         <p>Drag and drop units from the above table to the below boxes, and enter your own values. You may also enter units not provided above, but they will not be automatically converted.</p>
          <form class="form-inline">
           <fieldset>
               <div id="slide-wrap">
@@ -146,7 +145,7 @@
       </form>
       <div class="btn btn-primary btn-sm add">Add another multiplicand</div>
       <div class="btn btn-primary btn-sm compute">Compute</div>
-      <footer class="text-center">© Ben Orgera 2016. All Rights Reserved. </footer>
+      <footer class="text-center">© Jacob Kalodner and Ben Orgera 2016. All Rights Reserved. </footer>
 	</body>
 	<script type="text/javascript">
     var units = [
@@ -276,11 +275,6 @@
 
     var numOfFracs = 2;
 
-    var numerator='<div class="btn btn-primary btn-sm multiply">x</div><div class="numerator input-group textbox" id="num' + numOfFracs + '"><input type="number" name="value" class="form-control col-xs-2 num cell num-input" placeholder="Enter a value here"><div class="input-group-addon" name="unit">Drag unit here</div></div>';
-     var denominator='<div class="denominator tab input-group textbox tab" id="denom' + numOfFracs + '"><input type="number" name="value" class="form-control col-xs-2 num cell denom-input" placeholder="Enter a value here"><div class="input-group-addon" name="unit">Drag unit here</div></div>';
-    var flip='<button class="btn btn-primary btn-sm flip textbox" id="flip' + numOfFracs + '" type="button" onclick="reverse(this.id)">&#8635</button>';
-
-
     $(document).ready(function(){
       for(i=0;i<units.length;i++){ //loads all the buttons
         for(j=0;j<units[i].length;j++){
@@ -297,6 +291,9 @@
       }
 
       $('.add').click(function(){ //adds multiplicands
+        var numerator='<div class="btn btn-primary btn-sm multiply">x</div><div class="numerator input-group textbox" id="num' + numOfFracs + '"><input type="number" name="value" class="form-control col-xs-2 num cell num-input" placeholder="Enter a value here"><div class="input-group-addon" name="unit">Drag unit here</div></div>';
+        var denominator='<div class="denominator tab input-group textbox tab" id="denom' + numOfFracs + '"><input type="number" name="value" class="form-control col-xs-2 num cell denom-input" placeholder="Enter a value here"><div class="input-group-addon" name="unit">Drag unit here</div></div>';
+        var flip='<button class="btn btn-primary btn-sm flip textbox" id="flip' + numOfFracs + '" type="button" onclick="reverse(this.id)">&#8635</button>';
         $('.equals').before(numerator);
         $('.denominator').last().after(denominator);
         $('.flip').last().after(flip);
@@ -314,6 +311,7 @@
         });
 
         numOfFracs++;
+        console.log(numOfFracs);
 
       });
 
