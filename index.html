@@ -127,7 +127,7 @@
                           <input type="number" name="value" class="form-control col-xs-2 num cell denom-input" placeholder="Enter a value here">
                           <div class="input-group-addon" name="unit">Drag unit here</div>
                         </div>
-                        <div class="denominator input-group textbox" id="denom1">
+                        <div class="denominator input-group textbox tab" id="denom1">
                           <input type="number" name="value" class="form-control col-xs-2 num cell denom-input" placeholder= "Enter a value here">
                           <div class="input-group-addon" name="unit">Drag unit here</div>
                         </div>
@@ -277,7 +277,7 @@
     var numOfFracs = 2;
 
     var numerator='<div class="btn btn-primary btn-sm multiply">x</div><div class="numerator input-group textbox" id="num' + numOfFracs + '"><input type="number" name="value" class="form-control col-xs-2 num cell num-input" placeholder="Enter a value here"><div class="input-group-addon" name="unit">Drag unit here</div></div>';
-     var denominator='<div class="denominator tab input-group textbox" id="denom' + numOfFracs + '"><input type="number" name="value" class="form-control col-xs-2 num cell denom-input" placeholder="Enter a value here"><div class="input-group-addon" name="unit">Drag unit here</div></div>';
+     var denominator='<div class="denominator tab input-group textbox tab" id="denom' + numOfFracs + '"><input type="number" name="value" class="form-control col-xs-2 num cell denom-input" placeholder="Enter a value here"><div class="input-group-addon" name="unit">Drag unit here</div></div>';
     var flip='<button class="btn btn-primary btn-sm flip textbox" id="flip' + numOfFracs + '" type="button" onclick="reverse(this.id)">&#8635</button>';
 
 
@@ -454,23 +454,23 @@
     }
     .numerator{
       border-bottom: 2px solid black;
-      height:40px;
+      height:34px;
       width: 296px;
       display:inline-block;
-      padding-bottom: 10px;
+      padding-bottom: 1px;
     }
     .denominator{
       height:34px;
       width: 296px;
       display:inline-block;
-      margin-top: -16px;
+      margin-top: -12px;
     }
     .tab{
       margin-left:40px;
     }
     .multiply{
       margin-left:5px;
-      margin-top:10px;
+      margin-top:34px;
       margin-right:5px;
       position:static;
       cursor:auto;
@@ -504,7 +504,7 @@
       display: block; 
     }
     .equals{
-      margin-top: 3px;
+      margin-top: 34px;
       margin-left: 5px;
       margin-right: 5px;
       position: static;
