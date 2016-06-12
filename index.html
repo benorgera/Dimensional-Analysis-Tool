@@ -271,13 +271,13 @@
     var numOfFracs = 2;
 
     $(document).ready(function(){
-      for(i=0;i<units.length;i++){ //loads all the buttons
-        for(j=0;j<units[i].length;j++){
-          var x="#"+i;
-          var s = (typeof units[i][j].type != 'undefined' && units[i][j].type.length === 2) ? (' .' + units[i][j].type) : (units[i][j].type === "Other" ? ' .other' : ' ul');
-          $(x+s).append('<li draggable="true" class="btn btn-primary btn-sm btns"></li>');
-          $(x+' ul li').last().attr('id',units[i][j].HTML);
-          $(x+' ul li').last().html(units[i][j].HTML);
+      for(i = 0; i < units.length; i++){ //loads all the buttons
+        for(j = 0; j < units[i].length; j++){
+          var x = '#' + i;
+          var s = (typeof units[i][j].type != 'undefined' && units[i][j].type.length === 2) ? (' .' + units[i][j].type) : (units[i][j].type === 'Other' ? ' .other' : ' ul');
+          $(x + s).append('<li draggable="true" class="btn btn-primary btn-sm btns"></li>');
+          $(x + ' ul li').last().attr('id',units[i][j].HTML);
+          $(x + ' ul li').last().html(units[i][j].HTML);
           $('ul li').draggable({ //makes elements draggable
             revert: true,
             helper: 'clone'
@@ -400,7 +400,7 @@
       if (!$(input).val()) $(input).val(1);
 
       var res = convert($(input).val(), $(input).parent().find('div').html(), $(!isNumerator ? getNumerator($(input).parent().attr('id')) : getDenominator($(input).parent().attr('id'))).find('div').html());
-      
+
       if (res) $(!isNumerator ? getNumerator($(input).parent().attr('id')) : getDenominator($(input).parent().attr('id'))).find('input').val(res);
     }
 
