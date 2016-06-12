@@ -351,7 +351,8 @@
         $(denominatorUnits).each(function() {
           denominatorString += '(' + this + ')';
         });
-        var ans = product + "\\(\\frac{" + numeratorString + "}{" +denominatorString + "}\\)";
+        
+        var ans = product + "\\(\\frac{" + numeratorString + "}{" + denominatorString + "}\\)";
         $('.answer').html(ans);
         MathJax.Hub.Configured();
        });
