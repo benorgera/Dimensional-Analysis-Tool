@@ -292,15 +292,15 @@
         }
       }
 
-      $(".input-cell").keyup(function(event){
+      $('.input-cell').keyup(function(event){
         if(event.keyCode == 13){
-          $(".unit-input").click();
-          $('.input-cell').val("");
+          $('.unit-input').click();
         }
       });
 
       $('.unit-input').click(function(){
         var button = $('.input-cell').val();
+        $('.input-cell').val('');
         $('.insert').append('<li draggable="true" class="btn btn-primary btn-sm btns"></li>');
         $('.insert li').last().attr('id', button);
         $('.insert li').last().html(button);
