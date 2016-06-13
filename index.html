@@ -145,6 +145,7 @@
       </form>
       <div class="btn btn-primary btn-sm add">Add another multiplicand</div>
       <div class="btn btn-primary btn-sm compute">Compute</div>
+      <div class="btn btn-primary btn-sm clear">Clear All</div>
       <footer class="text-center">© Jacob Kalodner and Ben Orgera 2016. All Rights Reserved. </footer>
 	</body>
 	<script type="text/javascript">
@@ -310,9 +311,9 @@
       });
 
       $('.add').click(function(){ //adds multiplicands
-        var numerator='<div class="btn btn-primary btn-sm multiply">x</div><div class="numerator input-group textbox" id="num' + numOfFracs + '"><input type="number" name="value" class="form-control col-xs-2 num cell num-input" placeholder="Enter a value here"><div class="input-group-addon" name="unit">Drag unit here</div></div>';
-        var denominator='<div class="denominator tab input-group textbox tab" id="denom' + numOfFracs + '"><input type="number" name="value" class="form-control col-xs-2 num cell denom-input" placeholder="Enter a value here"><div class="input-group-addon" name="unit">Drag unit here</div></div>';
-        var flip='<button class="btn btn-primary btn-sm flip textbox" id="flip' + numOfFracs + '" type="button" onclick="reverse(this.id)">&#8635</button>';
+        var numerator='<div class="btn btn-primary btn-sm multiply added">x</div><div class="numerator input-group textbox added" id="num' + numOfFracs + '"><input type="number" name="value" class="form-control col-xs-2 num cell num-input" placeholder="Enter a value here"><div class="input-group-addon" name="unit">Drag unit here</div></div>';
+        var denominator='<div class="denominator tab input-group textbox tab added" id="denom' + numOfFracs + '"><input type="number" name="value" class="form-control col-xs-2 num cell denom-input" placeholder="Enter a value here"><div class="input-group-addon" name="unit">Drag unit here</div></div>';
+        var flip='<button class="btn btn-primary btn-sm flip textbox added" id="flip' + numOfFracs + '" type="button" onclick="reverse(this.id)">&#8635</button>';
         $('.equals').before(numerator);
         $('.denominator').last().after(denominator);
         $('.flip').last().after(flip);
@@ -363,11 +364,20 @@
         var numeratorString =  buildAnswerString(numeratorUnits);
         var denominatorString = buildAnswerString(denominatorUnits);
 
-        var ans = product + ((numeratorString.length === 0 && denominatorString.length === 0) ? '' : '\\(\\frac{' + (numeratorString.length > 0 ? numeratorString : 1) + '}{' + (denominatorString.length > 0 ? denominatorString : 1) + '}\\)');
+        var ans = product + ((numeratorString.length === 0 && denominatorString.length === 0) ? '' : (denominatorString.length === 0 ? ('\\(' + numeratorString + '\\)') : '\\(\\frac{' + (numeratorString.length > 0 ? numeratorString : 1) + '}{' + (denominatorString.length > 0 ? denominatorString : 1) + '}\\)'));
 
         $('#answer').html(ans);
         MathJax.Hub.Queue(["Typeset",MathJax.Hub,"answer"]);
-       });
+      });
+      $('.clear').click(function(){
+        $('.num-input').val('');
+        $('.denom-input').val('');
+        $('.input-group-addon').text('Drag unit here');
+        $('#answer').html('');
+        $('.added').each(function(){
+          $(this).remove();
+        });
+      });
     });
 
     $('.num-input').on('change paste keyup drop', autoConvert);
@@ -383,6 +393,7 @@
       s = s.replace('</sub>', '');
       s = s.replace('<sup>', '^');
       s = s.replace('</sup>', '');
+      s = s.replace(' ', '\\,');
       return s;
     }
 
@@ -424,36 +435,32 @@
     function dropEvent(event, ui) {
       $(this).find('div').html($(ui.draggable).attr('id'));
 
-      processAutoConvert($(this).find('input'));
+      processAutoConvert($(this).find('input'), true);
     }
 
     function autoConvert() {
-      processAutoConvert(this);
+      processAutoConvert(this, false);
     }
 
-    function processAutoConvert(input) {
+    function processAutoConvert(input, drop) {
       var isNumerator = $(input).hasClass('num-input');
 
-      if (!$(input).val()) $(input).val(1);
+      //if there was a drop, the other side of the fraction is empty and the units are convertible, default the other side of the fraction to 1
+      if (drop && !$(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val() && convert(drop ? ($(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val() ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val() : 1) : ($(input).val() ? $(input).val() : 1), drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('div').html() : $(input).parent().find('div').html(), !drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('div').html() : $(input).parent().find('div').html()))  $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val(1);
 
-      var res = convert($(input).val(), $(input).parent().find('div').html(), $(!isNumerator ? getNumerator($(input).parent().attr('id')) : getDenominator($(input).parent().attr('id'))).find('div').html());
+      var res = convert(drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val() : ($(input).val() ? $(input).val() : 1), drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('div').html() : $(input).parent().find('div').html(), !drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('div').html() : $(input).parent().find('div').html());
 
-      if (res) $(!isNumerator ? getNumerator($(input).parent().attr('id')) : getDenominator($(input).parent().attr('id'))).find('input').val(res);
+      if (res) drop ? $(input).val(res) : $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val(res);
     }
 
-    function getNumerator(id) {
+    function getNumeratorOrDenominator(id, isNumerator) {
       id = removeChars(id);
-      return $('#num' + id);
-    }
-
-    function getDenominator(id) {
-      id = removeChars(id);
-      return $('#denom' + id);
+      return $((isNumerator ? '#num' : '#denom') + id);
     }
 
     function reverse(id){
-      var numerator = getNumerator(id);
-      var denominator = getDenominator(id);
+      var numerator = getNumeratorOrDenominator(id, true);
+      var denominator = getNumeratorOrDenominator(id, false);
 
       var tempVal = $(numerator).find('input').val();
       var tempUnit = $(numerator).find('div').html();
@@ -543,6 +550,10 @@
     .compute{
       margin-top: 10px;
       display: block; 
+    }
+    .clear{
+      margin-top: 10px;
+      display: block;
     }
     .equals{
       margin-top: 34px;
