@@ -342,23 +342,63 @@
 
         var numeratorString = '';
         var denominatorString = '';
-
-        $(numeratorUnits).each(function() {
-          numeratorString += '(' + this + ')';
-        });
-
-        $(denominatorUnits).each(function() {
-          denominatorString += '(' + this + ')';
-        });
-        if(numeratorString.length>0 && denominatorString.length>0){
-          var ans = product + " \\(\\frac{" + numeratorString + "}{" + denominatorString + "}\\)";
-        }else if(numeratorString.length===0 && denominatorString.length>0){
-          var ans = product + " \\(\\frac{1}{" + denominatorString + "}\\)";
-        }else if(numeratorString.length>0 && denominatorString.length===0){
-          var ans = product + " \\(\\" + numeratorString + "\\)";
-        }else{
-          var ans = product;
+        var numeratorUnits = numeratorUnits.sort();
+        var denominatorUnits = denominatorUnits.sort();
+        var results = [];
+        for (var i = 0; i < numeratorUnits.length - 1; i++) {
+          if (numeratorUnits[i + 1] === numeratorUnits[i]) {
+            results.push(numeratorUnits[i]);
+            numeratorUnits.splice(i,1);
+            i--;
+          }
         }
+        for(var i = 0; i < numeratorUnits.length; i++) {
+          var exp = 1;
+          for(var j = 0; j<results.length; j++){
+            if(numeratorUnits[i]==results[j]){
+              exp++;
+            }
+          }
+          if(exp>1){
+            numeratorString += '(' + numeratorUnits[i] + ')' + '^' + exp;
+            exp=1;
+          }else{
+            numeratorString += '(' + numeratorUnits[i] + ')';
+          }
+        }
+        results = [];
+        for (var i = 0; i < denominatorUnits.length - 1; i++) {
+          if (denominatorUnits[i + 1] === denominatorUnits[i]) {
+            results.push(denominatorUnits[i]);
+            denominatorUnits.splice(i,1);
+            i--;
+          }
+        }
+        for(var i = 0; i < denominatorUnits.length; i++) {
+          var exp = 1;
+          for(var j = 0; j<results.length; j++){
+            if(denominatorUnits[i]==results[j]){
+              exp++;
+            }
+          }
+          if(exp>1){
+            denominatorString += '(' + denominatorUnits[i] + ')' + '^' + exp;
+            exp=1;
+          }else{
+            denominatorString += '(' + denominatorUnits[i] + ')';
+          }
+        }
+        var ans;
+        if(numeratorString.length>0 && denominatorString.length>0){
+          ans = product + " \\(\\frac{" + numeratorString + "}{" + denominatorString + "}\\)";
+        }else if(numeratorString.length===0 && denominatorString.length>0){
+          ans = product + " \\(\\frac{1}{" + denominatorString + "}\\)";
+        }else if(numeratorString.length>0 && denominatorString.length===0){
+          ans = product + " \\(" + numeratorString + "\\)";
+        }else{
+          ans = product;
+        }
+        console.log(ans);
         $('#answer').html(ans);
         MathJax.Hub.Queue(["Typeset",MathJax.Hub,"answer"]);
        });
