@@ -9,8 +9,7 @@
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
       <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=configured">
-      </script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	</head>
 	<body>
 		<div class="text-center">
@@ -118,7 +117,7 @@
                           <div class="input-group-addon" name="unit">Drag unit here</div>
                         </div>
                         <div class="btn btn-primary btn-sm equals">=</div>
-                        <div class="answer"></div>
+                        <div id="answer"></div>
                       </div>
                       <div class="horizontal-fields" id="denominators">
                         <div class="denominator input-group textbox" id="denom0">
@@ -351,10 +350,17 @@
         $(denominatorUnits).each(function() {
           denominatorString += '(' + this + ')';
         });
-        
-        var ans = product + " \\(\\frac{" + numeratorString + "}{" + denominatorString + "}\\)";
-        $('.answer').html(ans);
-        MathJax.Hub.Configured();
+        if(numeratorString.length>0 && denominatorString.length>0){
+          var ans = product + " \\(\\frac{" + numeratorString + "}{" + denominatorString + "}\\)";
+        }else if(numeratorString.length===0 && denominatorString.length>0){
+          var ans = product + " \\(\\frac{1}{" + denominatorString + "}\\)";
+        }else if(numeratorString.length>0 && denominatorString.length===0){
+          var ans = product + " \\(\\" + numeratorString + "\\)";
+        }else{
+          var ans = product;
+        }
+        $('#answer').html(ans);
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub,"answer"]);
        });
     });
 
@@ -520,7 +526,7 @@
       background-color: black;
       border-color: black;
     }
-    .answer{
+    #answer{
       margin-top: 34px;
       margin-left: 5px;
       position: static;
