@@ -27,7 +27,8 @@
     			<li><a data-toggle="tab" href="#4">Mass</a></li>
     			<li><a data-toggle="tab" href="#5">Force</a></li>
     			<li><a data-toggle="tab" href="#6">Pressure</a></li>
-    			<li><a data-toggle="tab" href="#7">Energy</a></li>         
+    			<li><a data-toggle="tab" href="#7">Energy</a></li>
+          <li><a data-toggle="tab" href="#8">Input Your Own</a></li>    
   			</ul>
 
   			<div class="tab-content">
@@ -100,6 +101,11 @@
             <ul class="other">
             </ul>
     		  </div>
+          <div id="8" class="tab-pane fade">
+            <input type="text" class="form-control col-xs-2 num cell input-cell" placeholder="Enter a unit here">
+            <button class="btn btn-primary btn-sm unit-input" type="button" style="height:34px">Create Unit</button>
+            <ul class="insert"></ul>
+          </div>
   		   </div>
          <br>
          <form class="form-inline">
@@ -264,7 +270,8 @@
         {'HTML':'Wh', 'cvt':3600, 'type':'Other'},
         {'HTML':'eV', 'cvt':1.6022e-19, 'type':'Other'},
         {'HTML':'MeV', 'cvt':1.6022e-13, 'type':'Other'}
-      ]
+      ],
+      [],
     ];
 
     var numOfFracs = 2;
@@ -283,6 +290,17 @@
           });
         }
       }
+
+      $('.unit-input').click(function(){
+        var button = $('.input-cell').val();
+        $('.insert').append('<li draggable="true" class="btn btn-primary btn-sm btns"></li>');
+        $('.insert li').last().attr('id', button);
+        $('.insert li').last().html(button);
+        $('ul li').draggable({ //makes elements draggable
+            revert: true,
+            helper: 'clone'
+          });
+      });
 
       $('.add').click(function(){ //adds multiplicands
         var numerator='<div class="btn btn-primary btn-sm multiply">x</div><div class="numerator input-group textbox" id="num' + numOfFracs + '"><input type="number" name="value" class="form-control col-xs-2 num cell num-input" placeholder="Enter a value here"><div class="input-group-addon" name="unit">Drag unit here</div></div>';
