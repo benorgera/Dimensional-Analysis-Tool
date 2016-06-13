@@ -151,7 +151,7 @@
     var units = [
       [
         {'HTML':'m','cvt':1, 'type':'SI'},
-        {'HTML':'mm', 'cvt:':0.001, 'type':'SI'},
+        {'HTML':'mm', 'cvt':0.001, 'type':'SI'},
         {'HTML':'cm', 'cvt':0.01, 'type':'SI'},
         {'HTML':'dm', 'cvt':0.1, 'type':'SI'},
         {'HTML':'dam', 'cvt':10, 'type':'SI'},
@@ -448,10 +448,10 @@
           if (units[i][j].HTML === unit2) unit2Pos = [i, j];
         }
       }
-
-      if (!unit1Pos || !unit2Pos || unit1Pos[0] !== unit2Pos[0]) return false; //non-convertible or null units
-
-      return unit1Val * units[unit1Pos[0]][unit1Pos[1]].cvt / units[unit2Pos[0]][unit2Pos[1]].cvt;
+      console.log(unit2Pos);
+      if (unit1Pos.length === 0 || unit2Pos.length === 0 || unit1Pos[0] !== unit2Pos[0]) return false; //non-convertible or null units
+        console.log(units[unit2Pos[0]][unit2Pos[1]]);
+        return unit1Val * units[unit1Pos[0]][unit1Pos[1]].cvt / units[unit2Pos[0]][unit2Pos[1]].cvt;
     }
 
     function removeChars(string) {
