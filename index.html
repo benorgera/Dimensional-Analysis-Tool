@@ -350,9 +350,7 @@
         for(var i = 0; i < numeratorUnits.length; i++) {
           var exp = 1;
           for(var j = 0; j<results.length; j++){
-            if(numeratorUnits[i]==results[j]){
-              exp++;
-            }
+            if(numeratorUnits[i]==results[j]) exp++;
           }
           if(exp>1){
             numeratorString += '(' + numeratorUnits[i] + ')' + '^' + exp;
@@ -372,9 +370,7 @@
         for(var i = 0; i < denominatorUnits.length; i++) {
           var exp = 1;
           for(var j = 0; j<results.length; j++){
-            if(denominatorUnits[i]==results[j]){
-              exp++;
-            }
+            if(denominatorUnits[i]==results[j]) exp++;
           }
           if(exp>1){
             denominatorString += '(' + denominatorUnits[i] + ')' + '^' + exp;
