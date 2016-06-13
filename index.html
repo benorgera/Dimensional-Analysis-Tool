@@ -364,6 +364,8 @@
         var numeratorString =  buildAnswerString(numeratorUnits);
         var denominatorString = buildAnswerString(denominatorUnits);
 
+        product = product.toExponential(4);
+
         var ans = product + ((numeratorString.length === 0 && denominatorString.length === 0) ? '' : (denominatorString.length === 0 ? ('\\(' + numeratorString + '\\)') : '\\(\\frac{' + (numeratorString.length > 0 ? numeratorString : 1) + '}{' + (denominatorString.length > 0 ? denominatorString : 1) + '}\\)'));
 
         $('#answer').html(ans);
@@ -450,7 +452,10 @@
 
       var res = convert(drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val() : ($(input).val() ? $(input).val() : 1), drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('div').html() : $(input).parent().find('div').html(), !drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('div').html() : $(input).parent().find('div').html());
 
-      if (res) drop ? $(input).val(res) : $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val(res);
+      if (res) {
+        res = res.toExponential(4);
+        drop ? $(input).val(res) : $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val(res);
+      }
     }
 
     function getNumeratorOrDenominator(id, isNumerator) {
