@@ -291,12 +291,7 @@
         $('.equals').before(numerator);
         $('.denominator').last().after(denominator);
         $('.flip').last().after(flip);
-        $('.result div').each(function(){
-          $(this).html('');
-        });
-        $('.result div').each(function(){
-          $(this).html('');
-        });
+        $('#answer').html('');
 
         $('.textbox').droppable({
           drop: dropEvent
@@ -344,7 +339,7 @@
         var denominatorString = '';
         var numeratorUnits = numeratorUnits.sort();
         var denominatorUnits = denominatorUnits.sort();
-        var results = [];
+        var results = []; //complicated exponents thing that can probably be simplified but i am very tired
         for (var i = 0; i < numeratorUnits.length - 1; i++) {
           if (numeratorUnits[i + 1] === numeratorUnits[i]) {
             results.push(numeratorUnits[i]);
