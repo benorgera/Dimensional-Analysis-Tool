@@ -350,7 +350,7 @@
             x = x.replace("<sup>","^");
             x = x.replace("</sup>","")
           }
-          console.log(x);
+          
           if ($(this).text() !== 'Drag unit here') numeratorUnits.push(x);
         });
 
@@ -379,60 +379,11 @@
           }
         }
 
-        var numeratorString = '';
-        var denominatorString = '';
-        var numeratorUnits = numeratorUnits.sort();
-        var denominatorUnits = denominatorUnits.sort();
-        var results = []; //complicated exponents thing that can probably be simplified but i am very tired
-        for (var i = 0; i < numeratorUnits.length - 1; i++) {
-          if (numeratorUnits[i + 1] === numeratorUnits[i]) {
-            results.push(numeratorUnits[i]);
-            numeratorUnits.splice(i,1);
-            i--;
-          }
-        }
-        for(var i = 0; i < numeratorUnits.length; i++) {
-          var exp = 1;
-          for(var j = 0; j<results.length; j++){
-            if(numeratorUnits[i]==results[j]) exp++;
-          }
-          if(exp>1){
-            numeratorString += '(' + numeratorUnits[i] + ')' + '^' + exp;
-            exp=1;
-          }else{
-            numeratorString += '(' + numeratorUnits[i] + ')';
-          }
-        }
-        results = [];
-        for (var i = 0; i < denominatorUnits.length - 1; i++) {
-          if (denominatorUnits[i + 1] === denominatorUnits[i]) {
-            results.push(denominatorUnits[i]);
-            denominatorUnits.splice(i,1);
-            i--;
-          }
-        }
-        for(var i = 0; i < denominatorUnits.length; i++) {
-          var exp = 1;
-          for(var j = 0; j<results.length; j++){
-            if(denominatorUnits[i]==results[j]) exp++;
-          }
-          if(exp>1){
-            denominatorString += '(' + denominatorUnits[i] + ')' + '^' + exp;
-            exp=1;
-          }else{
-            denominatorString += '(' + denominatorUnits[i] + ')';
-          }
-        }
-        var ans;
-        if(numeratorString.length>0 && denominatorString.length>0){
-          ans = product + " \\(\\frac{" + numeratorString + "}{" + denominatorString + "}\\)";
-        }else if(numeratorString.length===0 && denominatorString.length>0){
-          ans = product + " \\(\\frac{1}{" + denominatorString + "}\\)";
-        }else if(numeratorString.length>0 && denominatorString.length===0){
-          ans = product + " \\(" + numeratorString + "\\)";
-        }else{
-          ans = product;
-        }
+        var numeratorString =  buildAnswerString(numeratorUnits);
+        var denominatorString = buildAnswerString(denominatorUnits);
+
+        var ans = product + ((numeratorString.length === 0 && denominatorString.length === 0) ? '' : '\\(\\frac{' + (numeratorString.length > 0 ? numeratorString : 1) + '}{' + (denominatorString.length > 0 ? denominatorString : 1) + '}\\)');
+
         $('#answer').html(ans);
         MathJax.Hub.Queue(["Typeset",MathJax.Hub,"answer"]);
        });
@@ -446,6 +397,22 @@
       drop: dropEvent
     });
 
+    function buildAnswerString(unitArray) {
+      var results = [], exp = [], string = '';
+      for (var i = 0; i < unitArray.length; i++) exp[i] = 1;
+        for (var i = 0; i < unitArray.length; i++) {
+          if (results.indexOf(unitArray[i]) > -1) {
+            exp[results.indexOf(unitArray[i])]++;
+          } else {
+            results.push(unitArray[i]);
+          }
+        }
+
+        for (var i = 0; i < results.length; i++) string += '(' + results[i] + ')' + (exp[i] > 1 ? ('^' + exp[i]) : '');
+
+        return string;
+    }
+
     function convert(unit1Val, unit1, unit2) {
       var unit1Pos = [];
       var unit2Pos = [];
@@ -455,10 +422,10 @@
           if (units[i][j].HTML === unit2) unit2Pos = [i, j];
         }
       }
-      console.log(unit2Pos);
+
       if (unit1Pos.length === 0 || unit2Pos.length === 0 || unit1Pos[0] !== unit2Pos[0]) return false; //non-convertible or null units
-        console.log(units[unit2Pos[0]][unit2Pos[1]]);
-        return unit1Val * units[unit1Pos[0]][unit1Pos[1]].cvt / units[unit2Pos[0]][unit2Pos[1]].cvt;
+      
+      return unit1Val * units[unit1Pos[0]][unit1Pos[1]].cvt / units[unit2Pos[0]][unit2Pos[1]].cvt;
     }
 
     function removeChars(string) {
