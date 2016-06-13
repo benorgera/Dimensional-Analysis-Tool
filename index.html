@@ -341,30 +341,11 @@
         });
 
         $('.numerator div').each(function() {
-          var x = $(this).html();
-          if(x.includes("<sub>")){
-            x = x.replace("<sub>","_");
-            x = x.replace("</sub>","")
-          }
-          if(x.includes("<sup>")){
-            x = x.replace("<sup>","^");
-            x = x.replace("</sup>","")
-          }
-          
-          if ($(this).text() !== 'Drag unit here') numeratorUnits.push(x);
+          if ($(this).text() !== 'Drag unit here') numeratorUnits.push(htmlToMathjax($(this).html()));
         });
 
         $('.denominator div').each(function() {
-          var x = $(this).html();
-          if(x.includes("<sub>")){
-            x = x.replace("<sub>","_");
-            x = x.replace("</sub>","")
-          }
-          if(x.includes("<sup>")){
-            x = x.replace("<sup>","^");
-            x = x.replace("</sup>","")
-          }
-          if ($(this).text() !== 'Drag unit here') denominatorUnits.push(x);
+          if ($(this).text() !== 'Drag unit here') denominatorUnits.push(htmlToMathjax($(this).html()));
         });
 
 
@@ -396,6 +377,14 @@
     $('.textbox').droppable({ //makes textboxes droppable
       drop: dropEvent
     });
+
+    function htmlToMathjax(s) {
+      s = s.replace('<sub>', '_');
+      s = s.replace('</sub>', '');
+      s = s.replace('<sup>', '^');
+      s = s.replace('</sup>', '');
+      return s;
+    }
 
     function buildAnswerString(unitArray) {
       var results = [], exp = [], string = '';
@@ -467,13 +456,13 @@
       var denominator = getDenominator(id);
 
       var tempVal = $(numerator).find('input').val();
-      var tempUnit = $(numerator).find('div').text();
+      var tempUnit = $(numerator).find('div').html();
 
       $(numerator).find('input').val($(denominator).find('input').val());
       $(denominator).find('input').val(tempVal);
 
-      $(numerator).find('div').text($(denominator).find('div').text());
-      $(denominator).find('div').text(tempUnit);
+      $(numerator).find('div').html($(denominator).find('div').html());
+      $(denominator).find('div').html(tempUnit);
     }
 
 	</script>
