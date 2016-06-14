@@ -341,11 +341,11 @@
         });
 
         $('.numerator div').each(function() {
-          if ($(this).text() !== 'Drag unit here') numeratorUnits.push(htmlToMathjax($(this).html()));
+          if ($(this).text() !== 'Drag unit here') numeratorUnits.push(htmlToMathjax($(this).attr('id')));
         });
 
         $('.denominator div').each(function() {
-          if ($(this).text() !== 'Drag unit here') denominatorUnits.push(htmlToMathjax($(this).html()));
+          if ($(this).text() !== 'Drag unit here') denominatorUnits.push(htmlToMathjax($(this).attr('id')));
         });
 
 
@@ -362,8 +362,7 @@
 
         var numeratorString =  buildAnswerString(numeratorUnits);
         var denominatorString = buildAnswerString(denominatorUnits);
-
-        product = product.toExponential(4);
+        if(product>9999999999) product = product.toExponential(4);
 
         var ans = product + ((numeratorString.length === 0 && denominatorString.length === 0) ? '' : (denominatorString.length === 0 ? ('\\(' + numeratorString + '\\)') : '\\(\\frac{' + (numeratorString.length > 0 ? numeratorString : 1) + '}{' + (denominatorString.length > 0 ? denominatorString : 1) + '}\\)'));
 
@@ -434,8 +433,12 @@
     }
 
     function dropEvent(event, ui) {
-      $(this).find('div').html($(ui.draggable).attr('id'));
-
+      var idNum = $(ui.draggable).attr('id');
+      var lengthOfId = idNum.length;
+      if(idNum.includes('<sub>') || idNum.includes('<sup>')) lengthOfId = lengthOfId - 11;
+      if(lengthOfId>16) idNum = idNum.substring(0,16) + '...';
+      $(this).find('div').html(idNum);
+      $(this).find('div').attr('id',$(ui.draggable).attr('id'));
       processAutoConvert($(this).find('input'), true);
     }
 
