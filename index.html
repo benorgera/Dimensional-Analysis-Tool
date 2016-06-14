@@ -381,8 +381,9 @@
     });
 
     $('.num-input').on('change paste keyup drop', autoConvert);
-
+    $('.num-input').on('change paste keyup drop', clearAnswer);
     $('.denom-input').on('change paste keyup drop', autoConvert);
+    $('.denom-input').on('change paste keyup drop', clearAnswer);
 
     $('.textbox').droppable({ //makes textboxes droppable
       drop: dropEvent
@@ -433,6 +434,7 @@
     }
 
     function dropEvent(event, ui) {
+      $('#answer').html('');
       var idNum = $(ui.draggable).attr('id');
       var lengthOfId = idNum.length;
       if(idNum.includes('<sub>') || idNum.includes('<sup>')) lengthOfId = lengthOfId - 11;
@@ -468,7 +470,9 @@
       id = removeChars(id);
       return $((isNumerator ? '#num' : '#denom') + id);
     }
-
+    function clearAnswer(){
+      $('#answer').html('');
+    }
     function reverse(id){
       var numerator = getNumeratorOrDenominator(id, true);
       var denominator = getNumeratorOrDenominator(id, false);
