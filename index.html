@@ -409,6 +409,8 @@
           }
         }
 
+        if (results.length === 1 && exp[0] === 1) return results[0];
+
         for (var i = 0; i < results.length; i++) string += '(' + results[i] + ')' + (exp[i] > 1 ? ('^' + exp[i]) : '');
 
         return string;
@@ -456,10 +458,10 @@
 
       var res = convert(drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val() : ($(input).val() ? $(input).val() : 1), drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('div').html() : $(input).parent().find('div').html(), !drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('div').html() : $(input).parent().find('div').html());
 
-      if (res) {
-        // res = round(res, 4);
-        drop ? $(input).val(res) : $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val(res);
-      }
+
+    //maybe round here
+      if (res) drop ? $(input).val(res) : $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val(res);
+      
     }
 
     // function round(value, decimals) {
