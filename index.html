@@ -457,14 +457,14 @@
       var res = convert(drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val() : ($(input).val() ? $(input).val() : 1), drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('div').html() : $(input).parent().find('div').html(), !drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('div').html() : $(input).parent().find('div').html());
 
       if (res) {
-        res = round(res, 4);
+        // res = round(res, 4);
         drop ? $(input).val(res) : $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val(res);
       }
     }
 
-    function round(value, decimals) {
-      return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
-    }
+    // function round(value, decimals) {
+    //   return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
+    // }
 
     function getNumeratorOrDenominator(id, isNumerator) {
       id = removeChars(id);
@@ -479,12 +479,16 @@
 
       var tempVal = $(numerator).find('input').val();
       var tempUnit = $(numerator).find('div').html();
+      var tempId = $(numerator).find('div').attr('id');
 
       $(numerator).find('input').val($(denominator).find('input').val());
       $(denominator).find('input').val(tempVal);
 
       $(numerator).find('div').html($(denominator).find('div').html());
       $(denominator).find('div').html(tempUnit);
+
+      $(numerator).find('div').attr('id', $(denominator).find('div').attr('id'));
+      $(denominator).find('div').attr('id', tempUnit);
     }
 
 	</script>
