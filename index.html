@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<div class="text-center">
-			<h1>Fes's Dimensional Analysis Learning Tool</h1>
+			<h1>Dimensional Analysis Learning Tool</h1>
 			<p>This is a tool designed to teach dimensional analysis.</p>
 		</div>
 
@@ -362,6 +362,17 @@
 
         var numeratorString =  buildAnswerString(numeratorUnits);
         var denominatorString = buildAnswerString(denominatorUnits);
+        console.log(denominatorString);
+        console.log(denominatorString.includes('^'));
+        if(denominatorString.length !== 0){
+          if(denominatorString.includes('^')){
+            $('#answer').css({'margin-top':'26px'});
+          }else{
+            $('#answer').css({'margin-top':'32px'});
+          }
+        }else{
+          $('#answer').css({'margin-top':'34px'});
+        }
         if(product>9999999999) product = product.toExponential(4);
 
         var ans = product + ((numeratorString.length === 0 && denominatorString.length === 0) ? '' : (denominatorString.length === 0 ? ('\\(' + numeratorString + '\\)') : '\\(\\frac{' + (numeratorString.length > 0 ? numeratorString : 1) + '}{' + (denominatorString.length > 0 ? denominatorString : 1) + '}\\)'));
@@ -412,7 +423,6 @@
         if (results.length === 1 && exp[0] === 1) return results[0];
 
         for (var i = 0; i < results.length; i++) string += '(' + results[i] + ')' + (exp[i] > 1 ? ('^' + exp[i]) : '');
-
         return string;
     }
 
@@ -493,7 +503,6 @@
       $(numerator).find('div').attr('id', $(denominator).find('div').attr('id'));
       $(denominator).find('div').attr('id', tempUnit);
     }
-
 	</script>
 	<style type="text/css">
     input{
@@ -597,6 +606,7 @@
       display: inline-block;
       font-size: 20px;
       vertical-align: middle;
+      max-height: 30px;
     }
     #slide-wrap {
         margin: 0;
@@ -606,7 +616,6 @@
         float: left;
         margin-right: -30000px;     
     }
-
     div.horizontal-fields input,
     div.horizontal-fields textarea,
     div.horizontal-fields select,
@@ -615,8 +624,8 @@
     }
 
     .horizontal-fields {
-        display: block;
-        font-size: 0;
+      display: block;
+      font-size: 0;
     }
 	</style>
 </html>
