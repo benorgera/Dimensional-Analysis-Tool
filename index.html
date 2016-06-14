@@ -291,15 +291,15 @@
         }
       }
 
-      $(".input-cell").keyup(function(event){
+      $('.input-cell').keyup(function(event){
         if(event.keyCode == 13){
-          $(".unit-input").click();
-          $('.input-cell').val("");
+          $('.unit-input').click();
         }
       });
 
       $('.unit-input').click(function(){
         var button = $('.input-cell').val();
+        $('.input-cell').val('');
         $('.insert').append('<li draggable="true" class="btn btn-primary btn-sm btns"></li>');
         $('.insert li').last().attr('id', button);
         $('.insert li').last().html(button);
@@ -362,6 +362,8 @@
 
         var numeratorString =  buildAnswerString(numeratorUnits);
         var denominatorString = buildAnswerString(denominatorUnits);
+
+        product = product.toExponential(4);
 
         var ans = product + ((numeratorString.length === 0 && denominatorString.length === 0) ? '' : (denominatorString.length === 0 ? ('\\(' + numeratorString + '\\)') : '\\(\\frac{' + (numeratorString.length > 0 ? numeratorString : 1) + '}{' + (denominatorString.length > 0 ? denominatorString : 1) + '}\\)'));
 
@@ -449,7 +451,14 @@
 
       var res = convert(drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val() : ($(input).val() ? $(input).val() : 1), drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('div').html() : $(input).parent().find('div').html(), !drop ? $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('div').html() : $(input).parent().find('div').html());
 
-      if (res) drop ? $(input).val(res) : $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val(res);
+      if (res) {
+        res = round(res, 4);
+        drop ? $(input).val(res) : $(getNumeratorOrDenominator($(input).parent().attr('id'), !isNumerator)).find('input').val(res);
+      }
+    }
+
+    function round(value, decimals) {
+      return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
     }
 
     function getNumeratorOrDenominator(id, isNumerator) {
