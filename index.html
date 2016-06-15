@@ -319,6 +319,7 @@
         $('.denominator').last().after(denominator);
         $('.flip').last().after(flip);
         $('#answer').html('');
+        $('#slide-wrap').scrollLeft($('#slide-wrap').prop('scrollWidth'));
 
         $('.textbox').droppable({
           drop: dropEvent
